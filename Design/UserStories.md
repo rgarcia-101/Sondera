@@ -57,4 +57,4 @@ As a user, I want to be able to delete any of the data that I saved
 As a user, I want a way to grant another account access to data from my account
 
 
-* Part of the MVP
+*Part of the MVP
