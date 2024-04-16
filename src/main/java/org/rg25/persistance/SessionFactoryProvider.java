@@ -1,4 +1,4 @@
-package org.rg25.entity;
+package org.rg25.persistance;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
