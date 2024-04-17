@@ -19,8 +19,9 @@ No matter who you are, chances are you have found yourself, at one point or anot
   * JUnit
 * Logging
   * Log4J
-* External Web Services
+* Web Services
   * TBD
+  * Holiday api for calendar?
 * CSS
   * Bootstrap
 
