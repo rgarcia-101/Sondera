@@ -37,3 +37,10 @@ build/
 ### Mac OS ###
 .DS_Store
 /logs/
+
+
+# Important Files
+*.properties
+*.cfg.xml
+/src/main/resources/
+/src/test/resources/
