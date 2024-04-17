@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.rg25.entity.Todo;
+import org.rg25.entity.User;
 import org.rg25.util.Database;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class TodoTest {
 
     private GenericDao<Todo> dao;
+    private GenericDao<User> userDao;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     /**
@@ -24,9 +26,11 @@ public class TodoTest {
     public void setUp() {
         Database database = Database.getInstance();
         dao = new GenericDao<>(Todo.class);
+        userDao = new GenericDao<>(User.class);
         database.runSQL("newDump.sql");
         database.runSQL("userDump.sql");
         database.runSQL("todoDump.sql");
+        logger.info("--test start--");
     }
 
     /**
@@ -66,15 +70,15 @@ public class TodoTest {
     /**
      * Tests inserting then deleting
      */
-//    @Test
-//    void insertAndDeleteSuccess() {
-//        Todo newTodo = new Todo("testy", "Real Person", 111,theaterDao.getById(1));
-//        int result = dao.insert(newMovie);
-//        assertTrue(dao.getById(result).equals(newMovie));
-//
-//        dao.delete(newMovie);
-//        assertNull(dao.getById(result));
-//    }
+    @Test
+    void insertAndDeleteSuccess() {
+        Todo newTodo = new Todo(userDao.getById(1), "Go outside", "Do it", "2001-01-01 01:01:01", "2000-01-01 01:01:01", false);
+        int result = dao.insert(newTodo);
+        assertTrue(dao.getById(result).equals(newTodo));
+
+        dao.delete(newTodo);
+        assertNull(dao.getById(result));
+    }
 
     /**
      * Tests getting by property
@@ -82,9 +86,10 @@ public class TodoTest {
     @Test
     void testGetProperty() {
         ArrayList<Todo> todos = (ArrayList<Todo>) dao.getByProperty("title", "code");
-        logger.info(todos);
+        logger.info(todos.get(0));
         logger.info(dao.getById(1) + "");
-        assertTrue(todos.get(0).equals(dao.getById(1)));
+        assertFalse(todos.isEmpty());
+        assertEquals(todos.get(0), dao.getById(1));
     }
 
     @Test
@@ -92,6 +97,7 @@ public class TodoTest {
         ArrayList<Todo> todos = (ArrayList<Todo>) dao.getByPropertyLike("title", "co");
         logger.info(todos);
         logger.info(dao.getById(1) + "");
-        assertTrue(!todos.isEmpty());
+        assertFalse(todos.isEmpty());
+        assertEquals(todos.get(0), dao.getById(1));
     }
 }
