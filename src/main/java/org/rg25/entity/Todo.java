@@ -2,26 +2,28 @@ package org.rg25.entity;
 
 import jakarta.persistence.*;
 
+import java.util.Objects;
+
+/**
+ * Represents a to-do object
+ */
 @Entity(name = "Todo")
 @Table(name = "todo")
 public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @Column(name = "title")
     private String title;
-    @Column(name = "content")
+
     private String content;
     @Column(name = "due_date")
-    private String due_date;
+    private String dueDate;
     @Column(name = "created")
     private String createdOn;
-    @Column(name = "completed")
     private boolean completed;
 
     public Todo() {
@@ -33,9 +35,18 @@ public class Todo {
         user = todo.getUser();
         title = todo.getTitle();
         content = todo.getContent();
-        due_date = todo.getDueDate();
+        dueDate = todo.getDueDate();
         createdOn = todo.getCreatedOn();
         completed = todo.isCompleted();
+    }
+
+    public Todo(User user, String title, String content, String due_date, String createdOn, boolean completed) {
+        this.user = user;
+        this.title = title;
+        this.content = content;
+        this.dueDate = due_date;
+        this.createdOn = createdOn;
+        this.completed = completed;
     }
 
     public int getId() {
@@ -71,11 +82,11 @@ public class Todo {
     }
 
     public String getDueDate() {
-        return due_date;
+        return dueDate;
     }
 
     public void setDueDate(String due_date) {
-        this.due_date = due_date;
+        this.dueDate = due_date;
     }
 
     public String getCreatedOn() {
@@ -92,5 +103,31 @@ public class Todo {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Todo todo = (Todo) o;
+        return id == todo.id && completed == todo.completed && Objects.equals(user, todo.user) && Objects.equals(title, todo.title) && Objects.equals(content, todo.content) && Objects.equals(dueDate, todo.dueDate) && Objects.equals(createdOn, todo.createdOn);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, user, title, content, dueDate, createdOn, completed);
+    }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", user=" + user +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", due_date='" + dueDate + '\'' +
+                ", createdOn='" + createdOn + '\'' +
+                ", completed=" + completed +
+                '}';
     }
 }
