@@ -6,7 +6,7 @@ As a new user, I want to create an account so my data is tied to me
 
 ### Signin *
 
-As a returning user, I want to be able to access data tied to me
+As a returning user, I want to be able to access my account again along with associated data
 
 ### Account Recovery *
 
@@ -14,7 +14,7 @@ As a forgetful user, I want to be able to reset the password of my account
 
 ### Take Notes *
 
-As a user, I want an easy way to jot things down
+As a user, I want a text editor to jot things down and have them be saved
 
 ### Note Folders
 
@@ -30,7 +30,7 @@ As a user, I want to be able to organize links into folders
 
 ### ToDo *
 
-As a user, I want a way to jot down tasks I plan on doing
+As a user, I want a way to plan out and visualise tasks I plan on doing
 
 ### Organize ToDo
 
@@ -50,7 +50,7 @@ As a user, I want to be able to upload files so I can access them later
 
 ### Delete Data *
 
-As a user, I want to be able to delete any of the data that I saved
+As a user, I want to be able to delete any of the data from previously listed features
 
 ### Data Sharing
 
