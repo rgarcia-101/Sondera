@@ -25,4 +25,4 @@ No matter who you are, chances are you have found yourself, at one point or anot
   * Bootstrap
 
 ### Design
-* [User Stories](/Design/UserStories.md) 
+* [User Stories](/design/UserStories.md) 
