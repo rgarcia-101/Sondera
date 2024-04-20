@@ -1,6 +1,9 @@
 package org.rg25.util;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.sql.Connection;
@@ -16,6 +19,7 @@ import java.util.Properties;
 public class Database implements PropertiesLoader {
 
     private static Database instance = new Database();
+    private final Logger logger = LogManager.getLogger(this.getClass());
 
 
     private Properties properties;
@@ -46,7 +50,7 @@ public class Database implements PropertiesLoader {
             try {
                 connection.close();
             } catch (SQLException e) {
-                e.printStackTrace();
+                logger.error("Error disconnecting!" + e);
             }
         }
 
@@ -81,9 +85,9 @@ public class Database implements PropertiesLoader {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("Error with the sql command! " + e);
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error("Error running sql! " + e);
         } finally {
             disconnect();
         }
