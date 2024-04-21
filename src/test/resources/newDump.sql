@@ -7,10 +7,12 @@ DROP TABLE IF EXISTS `user`;
 
 create table user
 (
-    user_id       int auto_increment
+    user_id        int auto_increment
         primary key,
-    username varchar(50) not null,
-    name     varchar(50) not null
+    username       varchar(50) not null,
+    first_name     varchar(50) not null,
+    last_name      varchar(50) not null,
+    email          varchar(50) not null
 );
 
 LOCK TABLES user WRITE;
