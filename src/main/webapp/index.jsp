@@ -2,15 +2,17 @@
 <%@include file="taglib.jsp"%>
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>org</h2>
 
 
 <c:choose>
-    <c:when test="${empty userName}">
+    <c:when test="${empty user}">
         <a href = "logIn">Log in</a>
     </c:when>
     <c:otherwise>
-        <h3>Welcome ${userName}</h3>
+        <h3>Welcome ${user.username}</h3>
+        <br>
+        <a href="logout">Log out</a>
     </c:otherwise>
 </c:choose>
 
