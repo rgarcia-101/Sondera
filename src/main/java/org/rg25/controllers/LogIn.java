@@ -20,7 +20,7 @@ import java.util.Properties;
  *
  */
 public class LogIn extends HttpServlet implements PropertiesLoader {
-    Properties properties;
+    private Properties properties;
     private final Logger logger = LogManager.getLogger(this.getClass());
     public static String CLIENT_ID;
     public static String LOGIN_URL;
