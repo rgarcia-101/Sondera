@@ -43,6 +43,7 @@ CREATE TABLE `note`
     title     varchar(20)          not null,
     content   text                 not null,
     created   datetime             not null,
+    updated   datetime,
     user_id   int                  not null,
     constraint note_user_id_fk
         foreign key (user_id) references user (user_id)
