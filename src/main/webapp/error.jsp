@@ -4,7 +4,8 @@
     <title>Error!</title>
 </head>
 <body>
-<p>Something went wrong! Return <a href="index.jsp">here!</a></p>
+<%--TODO change link--%>
+<p>Something went wrong! Return <a href="/OrganizationalApp_war">here!</a></p>
 
 </body>
 </html>
