@@ -99,8 +99,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
                 logger.error("Error getting token from Cognito oauth url " + e.getMessage(), e);
             }
         }
-        RequestDispatcher dispatcher = req.getRequestDispatcher("index.jsp");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect("home");
     }
 
     /**
@@ -186,22 +185,23 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
         // Is in the database
         if (!userDao.getByProperty("username", testUser.getUsername()).isEmpty()) {
-
             user = userDao.getByProperty("username", testUser.getUsername()).get(0);
-            user = userDao.getById(user.getId());
+            testUser.setId(user.getId());
+            logger.info("current test user: " + testUser);
 
             // Checking if user data matches
             if (!user.equals(testUser)) {
+                logger.debug("issue with users, inserting new");
                 userDao.delete(user);
                 testUser.setId(userDao.insert(testUser));
             }
         }
         // Not in the database
         else {
+            logger.debug("must insert testuser: " + testUser);
             testUser.setId(userDao.insert(testUser));
         }
         user = testUser;
-        logger.info("theUser: " + user);
         return user;
     }
 
