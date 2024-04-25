@@ -58,8 +58,8 @@ public class notesController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO add way to change title
-        logger.debug("POST RECEIVED");
+        //TODO add way to change note title
+        logger.debug("Received Post");
         StringBuilder buffer = new StringBuilder();
         String line = null;
         User user = (User) req.getSession().getAttribute("user");
@@ -87,10 +87,8 @@ public class notesController extends HttpServlet {
                 return;
             }
 
-            logger.debug("About to save, here is user in note: " + note.getUser());
             if (user.getId() == note.getUser().getId()) {
                 note.setContent(text);
-                logger.debug("Note before save: " + note);
                 noteDao.update(note);
             }
         } catch (JSONException e) {

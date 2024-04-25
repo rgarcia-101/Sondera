@@ -3,9 +3,8 @@ let textArea;
 let saveText;
 let disappearCount;
 let noteId;
-// TODO test this
 
-// Ctrl + s save feature
+// Ctrl + s note feature
 window.addEventListener('load', function() {
     textArea = document.querySelector('#textInput');
     saveText = document.querySelector(("#saveText"));
@@ -20,13 +19,11 @@ window.addEventListener('load', function() {
     if (e.keyCode === 83 && ctrl) {
         e.preventDefault();
         let content = document.querySelector("#textInput");
-        console.log("Saving...");
-        save(content.value);
+        note(content.value);
     }
     })
 
     textArea.addEventListener('keyup', function(e){
-        console.log(textArea.value);
         if (disappearCount > 0) {
             disappearCount--;
         } else {
@@ -44,7 +41,7 @@ window.addEventListener('load', function() {
 
 })
 
-const save = () => {
+const note = () => {
     let xhr = new XMLHttpRequest();
     let url = "notes";
     xhr.open("POST", url, true);
