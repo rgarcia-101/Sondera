@@ -1,16 +1,20 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: rgarc
-  Date: 4/21/2024
-  Time: 3:05 AM
-  To change this template use File | Settings | File Templates.
---%>
+<%@include file="head.jsp"%>
+<%@include file="taglib.jsp"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <script src="save.js"></script>
 </head>
 <body>
+
+<main>
+
+    <button type="button" onclick="save();">Save</button>
+    <p class="text-success" id="saveText"></p>
+    <label for="textInput"></label>
+    <textarea class="w-50" style="resize: none" id="textInput">${textContent}</textarea>
+
+</main>
 
 </body>
 </html>
