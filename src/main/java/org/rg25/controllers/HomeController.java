@@ -37,10 +37,9 @@ public class HomeController extends HttpServlet {
             dispatch.forward(req, resp);
             return;
         }
+        User user = (User) session.getAttribute("user");
 
-        logger.debug(session.getAttribute("user") + " This is the user");
-
-        List<Note> noteList = noteDao.getAll();
+        List<Note> noteList = noteDao.getByProperty("user", user);
 
 
         logger.debug("Current notes: " + noteList);
