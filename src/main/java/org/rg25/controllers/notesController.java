@@ -83,11 +83,15 @@ public class notesController extends HttpServlet {
             int id = content.get("id").getAsInt();
             Note note = noteDao.getById(id);
             if (note.getContent().equals(text)) {
-                logger.debug("Text is identical, not saving...");
+                logger.info("Text is identical, not saving...");
                 return;
             }
 
+            //TODO remove
+            logger.info("user ID " + user.getId());
+            logger.info("note user ID " + note.getUser().getId());
             if (user.getId() == note.getUser().getId()) {
+                logger.info("Attempting to update..." + note);
                 note.setContent(text);
                 noteDao.update(note);
             }
