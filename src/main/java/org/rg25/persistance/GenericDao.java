@@ -82,7 +82,7 @@ public class GenericDao<T> {
      * @param value value to match
      * @return resulting rows
      */
-    public List<T> getByProperty(String property, String value) {
+    public List<T> getByProperty(String property, Object value) {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
@@ -98,7 +98,7 @@ public class GenericDao<T> {
      * @param value value to search for
      * @return found rows
      */
-    public List<T> getByPropertyLike(String property, String value) {
+    public List<T> getByPropertyLike(String property, Object value) {
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
