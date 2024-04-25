@@ -13,6 +13,7 @@
         <h3>Welcome ${user.username}</h3>
         <br>
         <a href="logout">Log out</a>
+        <a href="home">My Dashboard</a>
     </c:otherwise>
 </c:choose>
 
