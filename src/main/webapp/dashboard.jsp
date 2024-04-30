@@ -10,7 +10,8 @@
 
 <br>
 <h3>Notes:</h3>
-<c:forEach items="${notes}" var="note">
+<a href="notes">All notes</a><br>
+<c:forEach items="${notes}" end="5" var="note">
     <a href="notes?id=${note.id}">${note.title}</a>
 </c:forEach>
 

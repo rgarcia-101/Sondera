@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 @WebServlet(
-        urlPatterns = {"/notes"}
+        urlPatterns = {"/noteEditor"}
 )
 public class notesController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -48,7 +48,7 @@ public class notesController extends HttpServlet {
             dispatch.forward(req, resp);
             return;
         }
-        String url = "/notes.jsp";
+        String url = "/noteEditor.jsp";
         req.setAttribute("textContent", note.getContent());
         req.setAttribute("title", "Notes");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
