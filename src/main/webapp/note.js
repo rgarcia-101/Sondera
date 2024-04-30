@@ -4,7 +4,7 @@ let saveText;
 let disappearCount;
 let noteId;
 
-// Ctrl + s note feature
+// Ctrl + s feature
 window.addEventListener('load', function() {
     textArea = document.querySelector('#textInput');
     saveText = document.querySelector(("#saveText"));
@@ -43,7 +43,7 @@ window.addEventListener('load', function() {
 
 const note = () => {
     let xhr = new XMLHttpRequest();
-    let url = "notes";
+    let url = "noteEditor";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     let sentData = JSON.stringify({"textContent": `${textArea.value}`,"id": `${noteId}`});
