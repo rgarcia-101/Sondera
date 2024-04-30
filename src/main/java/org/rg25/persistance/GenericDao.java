@@ -124,6 +124,21 @@ public class GenericDao<T> {
     }
 
     /**
+     * Fetches all rows, to a limit
+     * @param limit row limit
+     * @return
+     */
+    public List<T> getAllUpTo(int limit) {
+        Session session = getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root =  query.from(type);
+        List<T> list = session.createQuery(query).setMaxResults(limit).getResultList();
+        session.close();
+        return list;
+    }
+
+    /**
      * Gets the session
      * @return session
      */
