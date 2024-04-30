@@ -16,6 +16,10 @@ As a forgetful user, I want to be able to reset the password of my account
 
 As a user, I want a text editor to jot things down and have them be saved
 
+### Update Notes *
+
+As a user, I want to be able to update my notes
+
 ### Note Folders
 
 As a user, I want to be able to organize saved notes into folders
@@ -23,6 +27,10 @@ As a user, I want to be able to organize saved notes into folders
 ### Bookmark *
 
 As a user, I want to be able to save links to the websites I need
+
+### Edit Bookmarks
+
+As a user, I want to be able to update my bookmarks
 
 ### Bookmark Folders
 
@@ -39,6 +47,10 @@ As a user, I want to be able to customize my ToDo items in a way that makes prio
 ### Date Saving *
 
 As a user, I want to be able to save dates
+
+### Date Updating
+
+As a user, I want to be able to update my dates
 
 ### Date Viewer
 
