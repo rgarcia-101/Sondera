@@ -87,9 +87,34 @@ public class GenericDao<T> {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root = query.from(type);
+        query.select(root).where(builder.equal(root.get(property), value));
+        session.close();
+        return session.createSelectionQuery(query).getResultList();
+    }
+
+    /**
+     * Fetches all matching rows, to a limit
+     * @param limit row limit
+     * @return
+     */
+    public List<T> getByPropertyUpTo(String property, Object value, int limit) {
+//        Session session = getSession();
+//        CriteriaBuilder builder = session.getCriteriaBuilder();
+//        CriteriaQuery<T> query = builder.createQuery(type);
+//        Root<T> root =  query.from(type);
+//        List<T> list = session.createQuery(query).setMaxResults(limit).getResultList();
+//        session.close();
+//        return list;
+
+        Session session = getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
 
         query.select(root).where(builder.equal(root.get(property), value));
-        return session.createSelectionQuery(query).getResultList();
+        List<T> list = session.createQuery(query).setMaxResults(limit).getResultList();
+        session.close();
+        return list;
     }
 
     /**
@@ -123,20 +148,6 @@ public class GenericDao<T> {
         return list;
     }
 
-    /**
-     * Fetches all rows, to a limit
-     * @param limit row limit
-     * @return
-     */
-    public List<T> getAllUpTo(int limit) {
-        Session session = getSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
-        Root<T> root =  query.from(type);
-        List<T> list = session.createQuery(query).setMaxResults(limit).getResultList();
-        session.close();
-        return list;
-    }
 
     /**
      * Gets the session

@@ -8,6 +8,7 @@ import org.rg25.entity.Note;
 import org.rg25.entity.User;
 import org.rg25.util.Database;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -91,6 +92,16 @@ public class NoteTest {
         logger.info(dao.getById(1) + "");
         assertFalse(notes.isEmpty());
         assertEquals(notes.get(0), dao.getById(2));
+    }
+
+    /**
+     * Tests getting by property, up to a limit
+     */
+    @Test
+    void testGetWithLimit() {
+        ArrayList<Note> notes = (ArrayList<Note>) dao.getByPropertyUpTo("content","note",3);
+        logger.info(notes.size());
+        assertTrue(notes.size() == 3);
     }
 
     /**
