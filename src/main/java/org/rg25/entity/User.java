@@ -24,6 +24,8 @@ public class User {
     private String email;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Todo> todos;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Note> notes;
 
     public User() {
     }
@@ -88,6 +90,14 @@ public class User {
 
     public void setTodos(List<Todo> todos) {
         this.todos = todos;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
     }
 
     @Override

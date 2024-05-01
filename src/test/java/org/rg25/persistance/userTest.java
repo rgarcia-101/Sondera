@@ -16,6 +16,13 @@ public class userTest {
     }
 
     @Test
+    public void getNotes() {
+        User user = users.getById(1);
+        logger.info("User to get notes from: " + user);
+        logger.info("Notes: " + user.getNotes());
+    }
+
+    @Test
     public void getByProperty() {
         User user;
         User testUser = users.getById(1);
