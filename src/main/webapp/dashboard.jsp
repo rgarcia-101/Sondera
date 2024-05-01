@@ -18,6 +18,20 @@
     <c:forEach items="${notes}" end="5" var="note">
         <a href="noteEditor?id=${note.id}">${note.title}</a>
     </c:forEach>
+
+    <br>
+    <h3>Todos:</h3>
+    <a href="todos">All todo</a><br>
+    <c:forEach items="${todos}" end="5" var="note">
+        <a href="noteEditor?id=${note.id}">${note.title}</a>
+    </c:forEach>
+
+    <br>
+    <h3>Dates:</h3>
+    <a href="dates">All dates</a><br>
+    <c:forEach items="${dates}" end="5" var="note">
+        <a href="noteEditor?id=${note.id}">${note.title}</a>
+    </c:forEach>
 </div>
 </div>
 </div>
