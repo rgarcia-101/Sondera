@@ -52,6 +52,8 @@ public class notesController extends HttpServlet {
         req.setAttribute("textContent", note.getContent());
         req.setAttribute("noteTitle", note.getTitle());
         req.setAttribute("title", "Notes");
+        req.getSession().setAttribute("object", note);
+        req.getSession().setAttribute("callback", "notes");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
 
