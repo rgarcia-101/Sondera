@@ -2,6 +2,7 @@
 <%@include file="taglib.jsp"%>
 <html>
 <body>
+<%@include file="navbar.jsp"%>
 <h2>org</h2>
 
 

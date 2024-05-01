@@ -2,18 +2,26 @@
 <%@include file="taglib.jsp"%>
 <html>
 <body>
-<h2>Dashboard</h2>
+<%@include file="navbar.jsp"%>
 
-<h3>Welcome ${user.username}</h3>
-<br>
-<a href="logout">Log out</a>
+<%@include file="sidebar.jsp"%>
 
-<br>
-<h3>Notes:</h3>
-<a href="notes">All notes</a><br>
-<c:forEach items="${notes}" end="5" var="note">
-    <a href="notes?id=${note.id}">${note.title}</a>
-</c:forEach>
+<div class="col-sm p-3 min-vh-100">
+    <h2>Dashboard</h2>
+
+    <h3>Welcome ${user.username}</h3>
+    <br>
+
+    <br>
+    <h3>Notes:</h3>
+    <a href="notes">All notes</a><br>
+    <c:forEach items="${notes}" end="5" var="note">
+        <a href="noteEditor?id=${note.id}">${note.title}</a>
+    </c:forEach>
+</div>
+</div>
+</div>
+
 
 </body>
 </html>
