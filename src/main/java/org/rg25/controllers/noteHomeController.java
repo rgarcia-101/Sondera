@@ -28,6 +28,8 @@ public class noteHomeController extends HttpServlet {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
 
+        //TODO optimize?
+
         // No user, default to error page
         if (session.getAttribute("user") == null) {
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
