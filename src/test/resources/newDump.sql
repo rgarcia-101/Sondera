@@ -23,7 +23,7 @@ create table todo
 (
     id        int auto_increment
         primary key,
-    title     varchar(20)          not null,
+    title     varchar(25)          not null,
     content   varchar (500)        not null,
     created   datetime             not null,
     completed tinyint(1) default 0 not null,
@@ -40,7 +40,7 @@ CREATE TABLE `note`
 (
     id        int auto_increment
         primary key,
-    title     varchar(20)          not null,
+    title     varchar(25)          not null,
     content   text                 not null,
     created   datetime             not null,
     updated   datetime,
@@ -51,3 +51,18 @@ CREATE TABLE `note`
 
 LOCK TABLES note WRITE;
 UNLOCK TABLES;
+
+CREATE TABLE `date`
+(
+    id        int AUTO_INCREMENT
+            PRIMARY KEY,
+    title     varchar(25)       NOT NULL,
+    `date`    DATE              NOT NULL,
+    content   varchar(500),
+    user_id   INT               NOT NULL,
+    constraint date_user_id
+        FOREIGN KEY (user_id) REFERENCES user (user_id)
+);
+
+LOCK TABLES `date` WRITE;
+UNLOCK TABLES ;
