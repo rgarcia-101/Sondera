@@ -8,11 +8,29 @@
 <body>
 
 <main>
+    <%@include file="navbar.jsp"%>
 
-    <button type="button" onclick="note();">Save</button>
-    <p class="text-success" id="saveText"></p>
-    <label for="textInput"></label>
-    <textarea class="w-50" style="resize: none" id="textInput">${textContent}</textarea>
+
+    <%@include file="sidebar.jsp"%>
+    <div class="col-sm p-3 min-vh-100">
+        <!-- content -->
+        <input class="form-control" id="noteTitle" type="text" value="${noteTitle}" style="width: 80%; font-size: 160%;">
+        <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="note();">Save</button>
+        <p class="text-success" id="saveText"></p>
+        <hr />
+        <div class="form-outline w-100" style="height: 80%; display: flex;">
+            <textarea class="form-control bg-light" style="resize: none" id="textInput">${textContent}</textarea>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+
+<%--    <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="note();">Save</button>--%>
+
+<%--    <label for="textInput"></label>--%>
 
 </main>
 

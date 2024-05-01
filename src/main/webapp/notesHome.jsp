@@ -8,9 +8,15 @@
 <body>
 
 <main>
+    <%@include file="navbar.jsp"%>
+    <%@include file="sidebar.jsp"%>
+    <a href="newNote">Create New Note</a>
     <c:forEach items="${notes}" var="note">
         <a href="noteEditor?id=${note.id}">${note.title}</a>
     </c:forEach>
+    </div>
+    </div>
+
 
 
 </main>
