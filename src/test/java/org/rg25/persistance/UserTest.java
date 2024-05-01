@@ -5,7 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 import org.rg25.entity.User;
 
-public class userTest {
+public class UserTest {
 
     Logger logger = LogManager.getLogger(this.getClass());
     GenericDao<User> users = new GenericDao<>(User.class);
