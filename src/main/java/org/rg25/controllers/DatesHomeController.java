@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(
-        urlPatterns = ("dates")
+        urlPatterns = {"/dates"}
 )
 public class DatesHomeController extends HttpServlet {
     @Override

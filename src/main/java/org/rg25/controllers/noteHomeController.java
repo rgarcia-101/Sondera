@@ -21,8 +21,7 @@ import java.util.List;
 )
 public class noteHomeController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private GenericDao<Note> noteDao = new GenericDao<>(Note.class);
-
+    private GenericDao<User> userDao = new GenericDao<>(User.class);
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -37,7 +36,11 @@ public class noteHomeController extends HttpServlet {
             return;
         }
 
-        List<Note> noteList = noteDao.getByProperty("user", user);
+        //FIXME only works if I do this??
+        user = userDao.getById(user.getId());
+
+
+        List<Note> noteList = user.getNotes();
         String url = "/notesHome.jsp";
         req.setAttribute("notes", noteList);
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
