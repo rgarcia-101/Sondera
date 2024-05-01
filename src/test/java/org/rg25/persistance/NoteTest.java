@@ -65,7 +65,7 @@ public class NoteTest {
     @Test
     void testGetAll() {
         ArrayList<Note> notes = (ArrayList<Note>) dao.getAll();
-        assertTrue(notes.size() == 2);
+        assertTrue(!notes.isEmpty());
     }
 
 

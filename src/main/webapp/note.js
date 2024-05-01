@@ -44,6 +44,7 @@ window.addEventListener('load', function() {
 })
 
 const note = () => {
+    // TODO enforce limit on title (25 as of now)
     let xhr = new XMLHttpRequest();
     let url = "noteEditor";
     xhr.open("POST", url, true);

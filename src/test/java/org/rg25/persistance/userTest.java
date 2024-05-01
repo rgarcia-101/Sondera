@@ -14,4 +14,15 @@ public class userTest {
         users.getAll();
         logger.debug("userget: " + users.getAll());
     }
+
+    @Test
+    public void getByProperty() {
+        User user;
+        User testUser = users.getById(1);
+        user = users.getByProperty("username", testUser.getUsername()).get(0);
+        logger.info(user);
+
+    }
+
+
 }
