@@ -31,7 +31,6 @@ public class HomeController extends HttpServlet {
         HttpSession session = req.getSession();
 
         // No user, default to timeout page
-        //TODO user check show up often, put in separate util class
         if (session.getAttribute("user") == null) {
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
@@ -39,7 +38,7 @@ public class HomeController extends HttpServlet {
         }
         User user = (User) session.getAttribute("user");
 
-        List<Note> noteList = noteDao.getByProperty("user", user);
+        List<Note> noteList = noteDao.getByPropertyUpTo("user", user,5);
 
 
         logger.debug("Current notes: " + noteList);

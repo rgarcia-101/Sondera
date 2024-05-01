@@ -50,6 +50,7 @@ public class notesController extends HttpServlet {
         }
         String url = "/noteEditor.jsp";
         req.setAttribute("textContent", note.getContent());
+        req.setAttribute("noteTitle", note.getTitle());
         req.setAttribute("title", "Notes");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
@@ -78,11 +79,13 @@ public class notesController extends HttpServlet {
 
         try {
             JsonObject content = JsonParser.parseString(buffer.toString()).getAsJsonObject();
+            logger.info("incoming json: " + content.toString());
 
             String text = content.get("textContent").getAsString();
             int id = content.get("id").getAsInt();
+            String title = content.get("noteTitle").getAsString();
             Note note = noteDao.getById(id);
-            if (note.getContent().equals(text)) {
+            if (note.getContent().equals(text) && note.getTitle().equals(title)) {
                 logger.info("Text is identical, not saving...");
                 return;
             }
@@ -93,6 +96,7 @@ public class notesController extends HttpServlet {
             if (user.getId() == note.getUser().getId()) {
                 logger.info("Attempting to update..." + note);
                 note.setContent(text);
+                note.setTitle(title);
                 noteDao.update(note);
             }
         } catch (JSONException e) {
