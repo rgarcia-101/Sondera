@@ -11,9 +11,15 @@
     <%@include file="navbar.jsp"%>
     <%@include file="sidebar.jsp"%>
     <a href="newNote">Create New Note</a>
+    <div class="container">
+        <div class="row">
     <c:forEach items="${notes}" var="note">
-        <a href="noteEditor?id=${note.id}">${note.title}</a>
+        <div note-id="${note.id}" class="col-sm-3 bg-light" style="height: 10%;width: 15%;">
+            <a href="noteEditor?id=${note.id}">${note.title}</a>
+        </div>
     </c:forEach>
+        </div>
+    </div>
     </div>
     </div>
 

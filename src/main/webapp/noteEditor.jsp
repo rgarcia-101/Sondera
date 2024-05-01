@@ -15,7 +15,24 @@
     <div class="col-sm p-3 min-vh-100">
         <!-- content -->
         <input class="form-control" id="noteTitle" type="text" value="${noteTitle}" style="width: 80%; font-size: 160%;">
-        <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="note();">Save</button>
+        <div class="d-flex p-2">
+            <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="note();">Save</button>
+
+            <div class="dropdown ms-auto">
+                <button class="btn btn-danger dropdown-toggle" type="button"
+                        id="deleteBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Delete
+                </button>
+                <form class="dropdown-menu p-4" action="delete" method="post" aria-labelledby="deleteBtn">
+                    <button type="submit" class="btn btn-danger">I'm sure</button>
+                </form>
+            </div>
+
+
+
+        </div>
+
+
         <p class="text-success" id="saveText"></p>
         <hr />
         <div class="form-outline w-100" style="height: 80%; display: flex;">
