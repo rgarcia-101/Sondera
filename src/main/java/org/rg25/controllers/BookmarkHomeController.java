@@ -2,8 +2,8 @@ package org.rg25.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.rg25.entity.Bookmark;
 import org.rg25.entity.Date;
-import org.rg25.entity.Note;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
 
@@ -14,13 +14,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.print.Book;
 import java.io.IOException;
 import java.util.List;
 
 @WebServlet(
-        urlPatterns = {"/dates"}
+        urlPatterns = {"/bookmarks"}
 )
-public class DatesHomeController extends HttpServlet {
+public class BookmarkHomeController extends HttpServlet {
+
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<User> userDao = new GenericDao<>(User.class);
 
@@ -40,11 +42,11 @@ public class DatesHomeController extends HttpServlet {
         //FIXME
         user = userDao.getById(user.getId());
 
-        List<Date> dateList = user.getDates();
+        List<Bookmark> bookmarkList = user.getBookmarks();
 
-        String url = "/datesHome.jsp";
-        req.setAttribute("dates", dateList);
+        String url = "/bookmarksHome.jsp";
+        req.setAttribute("bookmarks", bookmarkList);
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
     }
-    }
+}

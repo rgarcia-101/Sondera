@@ -1,30 +1,23 @@
 package org.rg25.controllers;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.*;
-import org.rg25.entity.Note;
-import org.rg25.persistance.GenericDao;
-import org.rg25.entity.User;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Set;
+
+import org.rg25.entity.User;
+import org.rg25.persistance.GenericDao;
 
 @WebServlet(
         urlPatterns = {"/delete"}
 )
-public class deleteController extends HttpServlet {
+public class DeleteController extends HttpServlet {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao dao;

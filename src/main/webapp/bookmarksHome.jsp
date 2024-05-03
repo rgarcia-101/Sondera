@@ -3,11 +3,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-<%--    <script src="note.js"></script>--%>
 </head>
 <body>
 
 <main>
+
+    <%@include file="navbar.jsp"%>
+    <%@include file="sidebar.jsp"%>
+    Bookmarks
+    </div>
+    </div>
 
 
 </main>

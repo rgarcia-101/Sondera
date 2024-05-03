@@ -35,7 +35,7 @@ public class TodoHomeController extends HttpServlet {
 
         List<Todo> todoList = user.getTodos();
 
-        String url = "/notesHome.jsp";
+        String url = "/todosHome.jsp";
         req.setAttribute("todos", todoList);
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
