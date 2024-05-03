@@ -13,7 +13,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private int user_id;
+    private int id;
     @Column(name = "username")
     private String username;
     @Column(name = "first_name")
@@ -26,7 +26,10 @@ public class User {
     private List<Todo> todos;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Note> notes;
-
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Date> dates;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Bookmark> bookmarks;
     public User() {
     }
 
@@ -35,7 +38,7 @@ public class User {
         firstName = newUser.getFirstName();
         lastName = newUser.getLastName();
         email = newUser.getEmail();
-        user_id = newUser.getId();
+        id = newUser.getId();
         todos = newUser.getTodos();
     }
 
@@ -44,11 +47,11 @@ public class User {
     }
 
     public int getId() {
-        return user_id;
+        return id;
     }
 
     public void setId(int id) {
-        this.user_id = id;
+        this.id = id;
     }
 
     public String getUsername() {
@@ -100,10 +103,27 @@ public class User {
         this.notes = notes;
     }
 
+    public List<Date> getDates() {
+        return dates;
+    }
+
+
+    public void setDates(List<Date> dates) {
+        this.dates = dates;
+    }
+
+    public List<Bookmark> getBookmarks() {
+        return bookmarks;
+    }
+
+    public void setBookmarks(List<Bookmark> bookmarks) {
+        this.bookmarks = bookmarks;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "user_id=" + user_id +
+                "user_id=" + id +
                 ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -135,12 +155,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return user_id == user.user_id && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email);
+        return id == user.id && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(user_id, username, firstName, lastName, email);
+        return Objects.hash(id, username, firstName, lastName, email);
     }
 }
