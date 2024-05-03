@@ -24,7 +24,7 @@ create table todo
     id        int auto_increment
         primary key,
     title     varchar(25)          not null,
-    content   varchar (500)        not null,
+    content   varchar (100)        not null,
     created   datetime             not null,
     completed tinyint(1) default 0 not null,
     due_date  datetime             not null,
@@ -66,3 +66,15 @@ CREATE TABLE `date`
 
 LOCK TABLES `date` WRITE;
 UNLOCK TABLES ;
+
+CREATE TABLE `bookmark`
+(
+    id        int auto_increment
+        primary key,
+    title         varchar(30)          not null,
+    description   varchar(200)         ,
+    link          varchar(100)         not null,
+    user_id       int                  not null,
+    constraint bookmark_user_id_fk
+        foreign key (user_id) references user (user_id)
+);
