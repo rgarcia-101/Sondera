@@ -13,4 +13,19 @@
     <exception-type>java.lang.Throwable</exception-type>
     <location>/error.jsp</location>
   </error-page>
+
+
+  <welcome-file-list>
+    <welcome-file>index</welcome-file>
+  </welcome-file-list>
+
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>org.rg25.controllers.DefaultController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/index</url-pattern>
+  </servlet-mapping>
 </web-app>
