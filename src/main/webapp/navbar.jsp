@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="index">Brand</a>
         <c:choose>
             <c:when test="${empty user}">
                 <a href = "logIn" class="ms-auto link-light">Log in</a>

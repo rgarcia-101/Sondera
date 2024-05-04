@@ -11,12 +11,14 @@
         <a href = "logIn">Log in</a>
     </c:when>
     <c:otherwise>
-        <h3>Welcome ${user.username}</h3>
-        <br>
-        <a href="logout">Log out</a>
-        <a href="home">My Dashboard</a>
+        <a href="home">Go To Dashboard</a>
     </c:otherwise>
 </c:choose>
+
+<div class="d-flex justify-content-center">
+    <h4>Home</h4>
+    <p>a</p>
+</div>
 
 
 </body>

@@ -20,17 +20,23 @@
     </c:forEach>
 
     <br>
+    <h3>Bookmarks:</h3>
+    <a href="bookmarks">All bookmarks</a><br>
+    <c:forEach items="${bookmarks}" end="5" var="bookmark">
+        <a href="bookmarkEditor?id=${bookmark.id}">${bookmark.title}</a>
+    </c:forEach>
+    <br>
     <h3>Todos:</h3>
     <a href="todos">All todo</a><br>
-    <c:forEach items="${todos}" end="5" var="note">
-        <a href="noteEditor?id=${note.id}">${note.title}</a>
+    <c:forEach items="${todos}" end="5" var="todo">
+        <a href="todoEditor?id=${todo.id}">${todo.title}</a>
     </c:forEach>
 
     <br>
     <h3>Dates:</h3>
     <a href="dates">All dates</a><br>
-    <c:forEach items="${dates}" end="5" var="note">
-        <a href="noteEditor?id=${note.id}">${note.title}</a>
+    <c:forEach items="${dates}" end="5" var="date">
+        <a href="dateEditor?id=${date.id}">${date.title}</a>
     </c:forEach>
 </div>
 </div>

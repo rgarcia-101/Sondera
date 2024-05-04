@@ -22,7 +22,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="bookmarks" class="nav-link text-white">
                             Bookmarks
                         </a>
                     </li>
