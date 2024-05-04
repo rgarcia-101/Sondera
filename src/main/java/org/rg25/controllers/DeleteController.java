@@ -27,6 +27,7 @@ public class DeleteController extends HttpServlet {
         logger.debug("Received Post");
         HttpSession session = req.getSession();
         User user = (User) req.getSession().getAttribute("user");
+        // TODO
         if (user == null) {
             logger.error("No user detected!");
             throw new ServletException();
@@ -47,5 +48,12 @@ public class DeleteController extends HttpServlet {
         session.setAttribute("object", null);
         logger.info("deleted object");
         resp.sendRedirect(callback);
+    }
+
+
+    // TODO use delete?
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
+
     }
 }

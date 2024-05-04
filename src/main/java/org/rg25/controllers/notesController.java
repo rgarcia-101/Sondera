@@ -109,6 +109,7 @@ public class notesController extends HttpServlet {
     }
 
 
+    // TODO put date save
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuilder buffer;
@@ -132,11 +133,12 @@ public class notesController extends HttpServlet {
             String title = content.get("noteTitle").getAsString();
             Note note = noteDao.getById(id);
             if (note.getContent().equals(text) && note.getTitle().equals(title)) {
-                logger.info("Text is identical, not saving...");
-                JsonObject jsonResponse = new JsonObject();
-                jsonResponse.addProperty("responseCode", "0");
-                writer.print(jsonResponse.toString());
-                writer.flush();
+                util.approveEquivalentJson(writer);
+//                logger.info("Text is identical, not saving...");
+//                JsonObject jsonResponse = new JsonObject();
+//                jsonResponse.addProperty("responseCode", "0");
+//                writer.print(jsonResponse.toString());
+//                writer.flush();
                 return;
             }
 
@@ -152,16 +154,10 @@ public class notesController extends HttpServlet {
                 writer.flush();
             }
         } catch (JSONException e) {
-            JsonObject jsonResponse = new JsonObject();
-            jsonResponse.addProperty("responseCode", "1");
-            writer.print(jsonResponse.toString());
-            writer.flush();
+            util.denyJson(writer);
             logger.error("Could not parse JSON! " + e);
         } catch (Exception e) {
-            JsonObject jsonResponse = new JsonObject();
-            jsonResponse.addProperty("responseCode", "1");
-            writer.print(jsonResponse.toString());
-            writer.flush();
+            util.denyJson(writer);
             logger.error("Something went wrong saving a note! " + e);
         }
     }
