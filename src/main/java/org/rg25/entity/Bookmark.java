@@ -20,6 +20,15 @@ public class Bookmark {
     private String title;
     private String description;
 
+    public Bookmark(){}
+
+    public Bookmark(String title, String url, String description, User user) {
+        setTitle(title);
+        setDescription(description);
+        setUrl(url);
+        setUser(user);
+    }
+
     public int getId() {
         return id;
     }

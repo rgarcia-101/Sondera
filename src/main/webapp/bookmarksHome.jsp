@@ -10,7 +10,16 @@
 
     <%@include file="navbar.jsp"%>
     <%@include file="sidebar.jsp"%>
-    Bookmarks
+    <a href="newBookmark">Create New Bookmark</a>
+    <div class="container">
+        <div class="row">
+            <c:forEach items="${bookmarks}" var="bookmark">
+                <div bookmark-id="${bookmark.id}" class="col-sm-3 bg-light" style="height: 10%;width: 15%;">
+                    <a href="bookmarkEditor?id=${bookmark.id}">${bookmark.title}</a>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
     </div>
     </div>
 
