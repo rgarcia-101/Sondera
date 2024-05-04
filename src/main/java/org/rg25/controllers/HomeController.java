@@ -24,6 +24,8 @@ public class HomeController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     GenericDao<Note> noteDao = new GenericDao<>(Note.class);
     GenericDao<Todo> todoDao = new GenericDao<>(Todo.class);
+    GenericDao<Date> dateDao = new GenericDao<>(Date.class);
+    GenericDao<Bookmark> bookmarkDao = new GenericDao<>(Bookmark.class);
 
 
     @Override
@@ -39,10 +41,17 @@ public class HomeController extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         List<Note> noteList = noteDao.getByPropertyUpTo("user", user,5);
+        List<Bookmark> bookmarkList = bookmarkDao.getByPropertyUpTo("user", user,5);
+        List<Todo> todoList = todoDao.getByPropertyUpTo("user", user,5);
+        List<Date> dateList = dateDao.getByPropertyUpTo("user", user,5);
+
 
 
         logger.debug("Current notes: " + noteList);
         req.setAttribute("notes", noteList);
+        req.setAttribute("bookmarks", bookmarkList);
+        req.setAttribute("todos", todoList);
+        req.setAttribute("dates", dateList);
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/dashboard.jsp");
         dispatch.forward(req, resp);
 
