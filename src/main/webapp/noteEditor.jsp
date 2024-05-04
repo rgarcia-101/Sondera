@@ -14,11 +14,11 @@
     <%@include file="sidebar.jsp"%>
     <div class="col-sm p-3 min-vh-100">
         <!-- content -->
-        <input class="form-control" id="noteTitle" type="text" value="${noteTitle}" style="width: 80%; font-size: 160%;">
+        <input class="form-control" id="noteTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
         <div class="d-flex p-2">
             <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="note();">Save</button>
 
-            <div class="dropdown ms-auto">
+            <div class="dropdown ms-auto" style="margin-top: 1em">
                 <button class="btn btn-danger dropdown-toggle" type="button"
                         id="deleteBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Delete
@@ -28,15 +28,12 @@
                 </form>
             </div>
 
-
-
         </div>
-
 
         <p class="text-success" id="saveText"></p>
         <hr />
         <div class="form-outline w-100" style="height: 80%; display: flex;">
-            <textarea class="form-control bg-light" style="resize: none" id="textInput">${textContent}</textarea>
+            <textarea class="form-control bg-light" style="resize: none" id="textInput">${object.content}</textarea>
         </div>
     </div>
     </div>

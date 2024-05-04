@@ -42,15 +42,38 @@ window.addEventListener('load', function() {
     });
 
 })
-
-const note = () => {
+const note = async () => {
     // TODO enforce limit on title (25 as of now)
-    let xhr = new XMLHttpRequest();
-    let url = "noteEditor";
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("Content-Type", "application/json");
-    let sentData = JSON.stringify({"textContent": `${textArea.value}`, "id": `${noteId}`,"noteTitle": `${noteTitle.value}`});
-    xhr.send(sentData);
-    saveText.innerHTML = "Saved!";
-    disappearCount = 10;
+
+    saveText.innerHTML = "";
+
+    let bodyData = JSON.stringify({
+        'textContent': `${textArea.value}`,
+        'id': `${noteId}`,
+        'noteTitle': `${noteTitle.value}`
+
+    });
+
+    let header = {'Content-Type': 'application/json'}
+
+    const reply =  fetch('noteEditor', {
+        method: 'PUT',
+        body: bodyData,
+        headers: header
+    }).then(response => response.json())
+        .then(received => {
+            if (received.responseCode == "0") {
+                saveText.className = "text-success"
+                saveText.innerHTML = "Saved!";
+                disappearCount = 10;
+            } else {
+                saveText.className = "text-danger";
+                saveText.innerHTML = "Could not save! Please try again."
+                disappearCount = 3;
+            }
+            console.log(received);
+        })
+
+
+
 }

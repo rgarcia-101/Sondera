@@ -1,6 +1,5 @@
 <%@include file="head.jsp"%>
 <%@include file="taglib.jsp"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
 <%--    <script src="note.js"></script>--%>
@@ -15,7 +14,7 @@
         <div class="row">
     <c:forEach items="${notes}" var="note">
         <div note-id="${note.id}" class="col-sm-3 bg-light" style="height: 10%;width: 15%;">
-            <a href="noteEditor?id=${note.id}">${note.title}</a>
+            <a href="bookmarkEditor?id=${note.id}">${note.title}</a>
         </div>
     </c:forEach>
         </div>

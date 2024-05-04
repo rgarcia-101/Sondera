@@ -43,6 +43,7 @@ public class noteHomeController extends HttpServlet {
         List<Note> noteList = user.getNotes();
         String url = "/notesHome.jsp";
         req.setAttribute("notes", noteList);
+        req.setAttribute("title", "Notes");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
 

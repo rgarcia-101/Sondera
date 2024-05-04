@@ -18,8 +18,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+//TODO consider something else
 @WebServlet (
-        urlPatterns = ("/newNote")
+        urlPatterns = {"/newBookmark"}
 )
 public class newNote extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -41,6 +42,8 @@ public class newNote extends HttpServlet {
         Note note = new Note(user, "New Note", "", format.format(date));
 
         int id = noteDao.insert(note);
+
+        session.setAttribute("title", "Edit Note");
 
         resp.sendRedirect("noteEditor?id=" + id);
     }
