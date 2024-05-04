@@ -2,7 +2,7 @@ package org.rg25.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.rg25.entity.Note;
+import org.rg25.entity.Bookmark;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
 
@@ -14,17 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-//TODO consider something else
-@WebServlet (
-        urlPatterns = {"/newNote"}
+@WebServlet(
+        urlPatterns = {"/newBookmark"}
 )
-public class newNote extends HttpServlet {
+public class NewBookmark extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private GenericDao<Note> noteDao = new GenericDao<>(Note.class);
+    private GenericDao<Bookmark> bookmarkDao = new GenericDao<>(Bookmark.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -37,14 +33,14 @@ public class newNote extends HttpServlet {
             dispatch.forward(req, resp);
             return;
         }
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        Note note = new Note(user, "New Note", "", format.format(date));
 
-        int id = noteDao.insert(note);
 
-        session.setAttribute("title", "Edit Note");
+        Bookmark bookmark = new Bookmark("New Bookmark","","",user);
 
-        resp.sendRedirect("noteEditor?id=" + id);
+        int id = bookmarkDao.insert(bookmark);
+
+        session.setAttribute("title", "Edit Bookmark");
+
+        resp.sendRedirect("bookmarkEditor?id=" + id);
     }
 }
