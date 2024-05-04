@@ -27,6 +27,7 @@
     <java-jwt-version>3.4.1</java-jwt-version>
     <json-version>20170516</json-version>
     <commons-io-version>2.11.0</commons-io-version>
+    <validator-version>1.8.0</validator-version>
   </properties>
   <dependencies>
     <dependency>
@@ -124,6 +125,11 @@
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
       <version>${commons-io-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-validator</groupId>
+      <artifactId>commons-validator</artifactId>
+      <version>${validator-version}</version>
     </dependency>
 
     <dependency>
