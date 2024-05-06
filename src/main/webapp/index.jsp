@@ -17,7 +17,6 @@
 
 <div class="d-flex justify-content-center">
     <h4>Home</h4>
-    <p>a</p>
 </div>
 
 
