@@ -17,7 +17,7 @@ const bookmark = async () => {
         'description': `${textArea.value}`,
         'id': `${bookmarkId}`,
         'bookmarkTitle': `${title.value}`,
-        'link': `${bookmarkId}`
+        'link': `${url.value}`
     });
 
     let header = {'Content-Type': 'application/json'}
