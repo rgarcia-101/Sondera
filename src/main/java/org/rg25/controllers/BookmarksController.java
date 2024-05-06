@@ -92,6 +92,10 @@ public class BookmarksController extends HttpServlet {
                 return;
             }
 
+            if (!link.contains("http://") || !link.contains("https://")) {
+                link = "https://" + link;
+            }
+
 
             if (user.getId() == bookmark.getUser().getId()) {
                 logger.info("Attempting to update..." + bookmark);
