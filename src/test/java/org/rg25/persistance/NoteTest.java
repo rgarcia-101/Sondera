@@ -42,6 +42,7 @@ public class NoteTest {
     void getByIDSuccess() {
         Note retrievedNote = dao.getById(1);
         assertEquals("code", retrievedNote.getTitle());
+        assertEquals("do", retrievedNote.getContent());
         logger.info(retrievedNote);
     }
 
@@ -52,11 +53,12 @@ public class NoteTest {
     void testUpdate() {
         Note note = dao.getById(1);
         Note oldTodo = new Note(note);
-        note.setTitle("codee");
+        note.setTitle("newTitle");
         dao.update(note);
         logger.info(dao.getById(1) + "");
         logger.info(oldTodo);
         assertFalse(oldTodo.equals(dao.getById(1)));
+        assertTrue(note.getTitle().equals("newTitle"));
     }
 
     /**
@@ -66,6 +68,7 @@ public class NoteTest {
     void testGetAll() {
         ArrayList<Note> notes = (ArrayList<Note>) dao.getAll();
         assertTrue(!notes.isEmpty());
+        assertTrue(notes.size() == 7);
     }
 
 
@@ -74,12 +77,15 @@ public class NoteTest {
      */
     @Test
     void insertAndDeleteSuccess() {
+        int allRecords = dao.getAll().size();
         Note newNote = new Note(userDao.getById(1),"Note to self", "do hw", "1000-01-01 00:00:00");
         int result = dao.insert(newNote);
         assertTrue(dao.getById(result).equals(newNote));
+        assertTrue((allRecords+1) == dao.getAll().size());
 
         dao.delete(newNote);
         assertNull(dao.getById(result));
+        assertTrue((allRecords) == dao.getAll().size());
     }
 
     /**
@@ -99,9 +105,10 @@ public class NoteTest {
      */
     @Test
     void testGetWithLimit() {
-        ArrayList<Note> notes = (ArrayList<Note>) dao.getByPropertyUpTo("content","note",3);
+        int limit = 2;
+        ArrayList<Note> notes = (ArrayList<Note>) dao.getByPropertyUpTo("content","note",2);
         logger.info(notes.size());
-        assertTrue(notes.size() == 3);
+        assertTrue(notes.size() == limit);
     }
 
     /**
