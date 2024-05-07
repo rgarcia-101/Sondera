@@ -1,5 +1,5 @@
-<div class="container-fluid" style="height: 100%;">
-    <div class="row">
+<div class="container-fluid" style="min-height: 100vh">
+    <div class="row vh-100">
         <div class="col-sm-auto bg-dark sticky-top">
             <div class="d-flex flex-sm-column flex-row flex-nowrap bg-dark align-items-center sticky-top">
                 <ul class="nav nav-pills flex-column mb-auto">
@@ -31,5 +31,5 @@
                 </ul>
             </div>
         </div>
-        <div class="col-sm p-3 min-vh-100">
+        <div class="col-sm p-3" style="min-height: 100%">
             <!-- content from view -->

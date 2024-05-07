@@ -5,22 +5,12 @@
 </head>
 <body>
 
-<main>
 
     <c:import url="navbar.jsp"/>
     <c:import url="sidebar.jsp"/>
     <button class="btn btn-primary">
         <a href="newBookmark" class="link-light">Create New Bookmark</a>
     </button>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--            <c:forEach items="${bookmarks}" var="bookmark">--%>
-<%--                <div bookmark-id="${bookmark.id}" class="col-sm-3 bg-light" style="height: 10%;width: 15%;">--%>
-<%--                    <a href="bookmarkEditor?id=${bookmark.id}">${bookmark.title}</a>--%>
-<%--                </div>--%>
-<%--            </c:forEach>--%>
-<%--        </div>--%>
-<%--    </div>--%>
 
 
     <section class="pt-5 pb-5">
@@ -48,9 +38,7 @@
 
     </div>
     </div>
-
-
-</main>
+</div>
 
 </body>
 </html>

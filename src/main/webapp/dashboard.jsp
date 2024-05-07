@@ -1,17 +1,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="head.jsp"/>
 <html>
+<head>
+
+</head>
 <body>
 <c:import url="navbar.jsp"/>
 <c:import url="sidebar.jsp"/>
-
-<div class="col-sm p-3 min-vh-100">
     <h2>Dashboard</h2>
 
     <h3>Welcome ${user.username}</h3>
-    <br>
-
-    <br>
+    <br><br>
     <h3>Notes:</h3>
     <button class="btn btn-primary">
         <a href="notes" class="link-light">View All Notes</a>
@@ -61,14 +60,6 @@
         </div>
     </c:forEach>
     </div>
-
-    <br>
-    <h3>Dates:</h3>
-    <button class="btn btn-primary">
-        <a href="dates" class="link-light">View All Dates</a>
-    </button>    <c:forEach items="${dates}" end="5" var="date">
-        <a href="dateEditor?id=${date.id}">${date.title}</a>
-    </c:forEach>
 </div>
 </div>
 </div>

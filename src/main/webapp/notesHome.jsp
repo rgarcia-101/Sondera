@@ -2,25 +2,14 @@
 <c:import url="head.jsp"/>
 <html>
 <head>
-<%--    <script src="note.js"></script>--%>
 </head>
 <body>
-
 <main>
     <c:import url="navbar.jsp"/>
     <c:import url="sidebar.jsp"/>
     <button class="btn btn-primary">
         <a href="newNote" class="link-light">Create New Note</a>
     </button>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--    <c:forEach items="${notes}" var="note">--%>
-<%--        <div note-id="${note.id}" class="col-sm-3 bg-light" style="height: 10%;width: 15%;">--%>
-<%--            <a href="bookmarkEditor?id=${note.id}">${note.title}</a>--%>
-<%--        </div>--%>
-<%--    </c:forEach>--%>
-<%--        </div>--%>
-<%--    </div>--%>
 
     <section class="pt-5 pb-5">
         <div class="container">
@@ -46,10 +35,11 @@
 
     </div>
     </div>
-
-
+</div>
 
 </main>
+
+
 
 </body>
 </html>
