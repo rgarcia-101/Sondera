@@ -23,7 +23,7 @@ public class DefaultController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        User user = userGenericDao.getById(1);
+
         req.setAttribute("title", "home");
         String url = "/index.jsp";
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
