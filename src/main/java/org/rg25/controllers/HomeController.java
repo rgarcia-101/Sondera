@@ -49,7 +49,7 @@ public class HomeController extends HttpServlet {
 
 
 
-        logger.debug("Current notes: " + noteList);
+        req.setAttribute("title", "Dashboard");
         req.setAttribute("notes", noteList);
         req.setAttribute("bookmarks", bookmarkList);
         req.setAttribute("todos", todoList);

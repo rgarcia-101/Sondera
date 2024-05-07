@@ -6,7 +6,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.rg25.entity.Bookmark;
-import org.rg25.entity.Note;
 import org.rg25.entity.User;
 import org.rg25.util.ServletUtil;
 
@@ -19,15 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.rmi.ServerException;
 
 import org.rg25.persistance.GenericDao;
-import org.rg25.util.ServletUtil;
 
 @WebServlet(
         urlPatterns = {"/bookmarkEditor"}
 )
-public class BookmarksController extends HttpServlet {
+public class BookmarkController extends HttpServlet {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Bookmark> bookmarkDao = new GenericDao<>(Bookmark.class);
