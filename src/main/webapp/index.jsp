@@ -3,20 +3,21 @@
 <html>
 <body>
 <c:import url="navbar.jsp"/>
-<h2>org</h2>
 
 
-<c:choose>
-    <c:when test="${empty user}">
-        <a href = "logIn">Log in</a>
-    </c:when>
-    <c:otherwise>
-        <a href="home">Go To Dashboard</a>
-    </c:otherwise>
-</c:choose>
-
-<div class="d-flex justify-content-center">
-    <h4>Home</h4>
+<div class="text-center w-100">
+    <h2 style="font-size: 3em">Welcome to Sondera!</h2>
+    <h4 style="font-size: 2em">Your center for note-taking and organization</h4>
+    <c:choose>
+        <c:when test="${empty user}">
+            <p>Log in here:</p>
+            <button class="btn btn-primary"><a href="logIn" class="text-white">Log in</a></button>
+        </c:when>
+        <c:otherwise>
+            <p>Open your dashboard:</p>
+            <a href="home">Go To Dashboard</a>
+        </c:otherwise>
+    </c:choose>
 </div>
 
 
