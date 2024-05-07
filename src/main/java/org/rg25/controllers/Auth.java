@@ -191,9 +191,14 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
             // Checking if user data matches
             if (!user.equals(testUser)) {
-                //TODO don't delete, update
-                logger.debug("issue with users, inserting new");
-                userDao.delete(user);
+                //TODO test this
+                logger.debug("issue with users, updating info");
+                user.setEmail(testUser.getEmail());
+                user.setUsername(testUser.getUsername());
+                user.setFirstName(testUser.getFirstName());
+                user.setLastName(testUser.getLastName());
+                userDao.update(user);
+//                userDao.delete(user);
                 testUser.setId(userDao.insert(testUser));
             }
         }
