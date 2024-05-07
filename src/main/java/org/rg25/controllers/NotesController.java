@@ -17,16 +17,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Set;
 
 @WebServlet(
         urlPatterns = {"/noteEditor"}
 )
-public class notesController extends HttpServlet {
+public class NotesController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Note> noteDao = new GenericDao<>(Note.class);
     private ServletUtil util = new ServletUtil();
@@ -62,49 +59,6 @@ public class notesController extends HttpServlet {
     //TODO has been replaced with doPut, decide what to do with this
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        StringBuilder buffer = new StringBuilder();
-//        String line = null;
-//        User user = (User) req.getSession().getAttribute("user");
-//        if (user == null) {
-//            logger.error("No user detected!");
-//            throw new ServletException();
-//        }
-//        try {
-//            BufferedReader reader = req.getReader();
-//            while ((line = reader.readLine()) != null) {
-//                buffer.append(line);
-//            }
-//        } catch (Exception e) {
-//            logger.error("Could not read! " + e);
-//        }
-//
-//        buffer = util.readRequest(req);
-//
-//        try {
-//            JsonObject content = JsonParser.parseString(buffer.toString()).getAsJsonObject();
-//            logger.info("incoming json: " + content.toString());
-//
-//            String text = content.get("textContent").getAsString();
-//            int id = content.get("id").getAsInt();
-//            String title = content.get("noteTitle").getAsString();
-//            Note note = noteDao.getById(id);
-//            if (note.getContent().equals(text) && note.getTitle().equals(title)) {
-//                logger.info("Text is identical, not saving...");
-//                return;
-//            }
-//
-//
-//            if (user.getId() == note.getUser().getId()) {
-//                logger.info("Attempting to update..." + note);
-//                note.setContent(text);
-//                note.setTitle(title);
-//                noteDao.update(note);
-//            }
-//        } catch (JSONException e) {
-//            logger.error("Could not parse JSON! " + e);
-//        } catch (Exception e) {
-//            logger.error("Something went wrong saving a note! " + e);
-//        }
 
     }
 
@@ -134,11 +88,6 @@ public class notesController extends HttpServlet {
             Note note = noteDao.getById(id);
             if (note.getContent().equals(text) && note.getTitle().equals(title)) {
                 util.approveEquivalentJson(writer);
-//                logger.info("Text is identical, not saving...");
-//                JsonObject jsonResponse = new JsonObject();
-//                jsonResponse.addProperty("responseCode", "0");
-//                writer.print(jsonResponse.toString());
-//                writer.flush();
                 return;
             }
 

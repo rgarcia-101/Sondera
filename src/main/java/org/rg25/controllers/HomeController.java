@@ -39,6 +39,8 @@ public class HomeController extends HttpServlet {
             return;
         }
         User user = (User) session.getAttribute("user");
+        session.setAttribute("object", null);
+        session.setAttribute("callback", null);
 
         List<Note> noteList = noteDao.getByPropertyUpTo("user", user,5);
         List<Bookmark> bookmarkList = bookmarkDao.getByPropertyUpTo("user", user,5);

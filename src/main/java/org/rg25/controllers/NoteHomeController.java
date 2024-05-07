@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet (
         urlPatterns = ("/notes")
 )
-public class noteHomeController extends HttpServlet {
+public class NoteHomeController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<User> userDao = new GenericDao<>(User.class);
     @Override
