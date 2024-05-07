@@ -92,7 +92,8 @@ public class BookmarksController extends HttpServlet {
                 return;
             }
 
-            if (!link.contains("http://") || !link.contains("https://")) {
+            //TODO improve url verification
+            if (!link.contains("http://") && !link.contains("https://")) {
                 link = "https://" + link;
             }
 
