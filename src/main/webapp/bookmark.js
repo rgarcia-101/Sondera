@@ -13,6 +13,13 @@ const bookmark = async () => {
 
     saveText.innerHTML = "";
 
+    if (title.value.trim().length == 0) {
+        saveText.className = "text-danger";
+        saveText.innerHTML = "Please set a title!"
+        disappearCount = 3;
+        return;
+    }
+
     let bodyData = JSON.stringify({
         'description': `${textArea.value}`,
         'id': `${bookmarkId}`,

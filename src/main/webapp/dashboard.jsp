@@ -1,10 +1,9 @@
-<%@include file="head.jsp"%>
-<%@include file="taglib.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:import url="head.jsp"/>
 <html>
 <body>
-<%@include file="navbar.jsp"%>
-
-<%@include file="sidebar.jsp"%>
+<c:import url="navbar.jsp"/>
+<c:import url="sidebar.jsp"/>
 
 <div class="col-sm p-3 min-vh-100">
     <h2>Dashboard</h2>
@@ -14,7 +13,9 @@
 
     <br>
     <h3>Notes:</h3>
-    <a href="notes">All notes</a><br>
+    <button class="btn btn-primary">
+        <a href="notes" class="link-light">View All Notes</a>
+    </button>
     <div class="container d-flex mt-4 p-4" style="width: 95%;margin-left: 0">
     <c:forEach items="${notes}" end="5" var="note">
         <div class="card text-truncate" style="width: 25%;max-height: 400px;">
@@ -29,7 +30,9 @@
 
     <br>
     <h3>Bookmarks:</h3>
-    <a href="bookmarks">All bookmarks</a><br>
+    <button class="btn btn-primary">
+        <a href="bookmarks" class="link-light">View All Bookmarks</a>
+    </button>
     <div class="container d-flex mt-4 p-4" style="width: 95%;margin-left: 0">
     <c:forEach items="${bookmarks}" end="5" var="bookmark">
         <div class="card text-truncate" style="width: 25%;max-height: 400px;">
@@ -43,7 +46,9 @@
     </div>
     <br>
     <h3>Todos:</h3>
-    <a href="todos">All todo</a><br>
+    <button class="btn btn-primary">
+        <a href="todos" class="link-light">View All Todos</a>
+    </button>
     <div class="container d-flex mt-4 p-4" style="width: 95%;margin-left: 0">
     <c:forEach items="${todos}" end="5" var="todo">
         <div class="card text-truncate" style="width: 25%;max-height: 400px;">
@@ -59,8 +64,9 @@
 
     <br>
     <h3>Dates:</h3>
-    <a href="dates">All dates</a><br>
-    <c:forEach items="${dates}" end="5" var="date">
+    <button class="btn btn-primary">
+        <a href="dates" class="link-light">View All Dates</a>
+    </button>    <c:forEach items="${dates}" end="5" var="date">
         <a href="dateEditor?id=${date.id}">${date.title}</a>
     </c:forEach>
 </div>

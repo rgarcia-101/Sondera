@@ -2,7 +2,7 @@ let ctrl = false;
 let textArea;
 let saveText;
 let disappearCount;
-let noteTitle
+let title
 let noteId;
 
 // Ctrl + s feature
@@ -10,7 +10,7 @@ window.addEventListener('load', function() {
     textArea = document.querySelector('#textInput');
     saveText = document.querySelector('#saveText');
     noteId = new URLSearchParams(window.location.search).get('id');
-    noteTitle = document.querySelector('#noteTitle');
+    title = document.querySelector('#noteTitle');
     disappearCount = 0;
     textArea.addEventListener('keydown',function (e) {
         if (e.keyCode === 17) {
@@ -43,14 +43,18 @@ window.addEventListener('load', function() {
 
 })
 const note = async () => {
-    // TODO enforce limit on title (25 as of now)
-
     saveText.innerHTML = "";
 
+    if (title.value.trim().length == 0) {
+        saveText.className = "text-danger";
+        saveText.innerHTML = "Please set a title!"
+        disappearCount = 3;
+        return;
+    }
     let bodyData = JSON.stringify({
         'textContent': `${textArea.value}`,
         'id': `${noteId}`,
-        'noteTitle': `${noteTitle.value}`
+        'noteTitle': `${title.value}`
     });
 
     let header = {'Content-Type': 'application/json'}

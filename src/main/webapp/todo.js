@@ -2,7 +2,7 @@ let ctrl = false;
 let textArea;
 let saveText;
 let disappearCount;
-let todoTitle
+let title
 let todoId;
 let dueDate;
 
@@ -11,7 +11,7 @@ window.addEventListener('load', function() {
     textArea = document.querySelector('#textInput');
     saveText = document.querySelector('#saveText');
     todoId = new URLSearchParams(window.location.search).get('id');
-    todoTitle = document.querySelector('#noteTitle');
+    title = document.querySelector('#noteTitle');
     dueDate = document.querySelector('#dueDate')
     disappearCount = 0;
     textArea.addEventListener('keydown',function (e) {
@@ -22,8 +22,7 @@ window.addEventListener('load', function() {
 
         if (e.keyCode === 83 && ctrl) {
             e.preventDefault();
-            let content = document.querySelector("#textInput");
-            note(content.value);
+            todo(textArea.value);
         }
     })
 
@@ -39,20 +38,22 @@ window.addEventListener('load', function() {
         }
     });
 
-    textArea.addEventListener('keyup', function(e){
-
-    });
 
 })
 const todo = async () => {
 
-    console.log(`${dueDate.value}`);
     saveText.innerHTML = "";
+    if (title.value.trim().length == 0) {
+        saveText.className = "text-danger";
+        saveText.innerHTML = "Please set a title!"
+        disappearCount = 3;
+        return;
+    }
 
     let bodyData = JSON.stringify({
         'textContent': `${textArea.value}`,
         'id': `${todoId}`,
-        'todoTitle': `${todoTitle.value}`,
+        'todoTitle': `${title.value}`,
         'dueDate': `${dueDate.value}`
     });
 
