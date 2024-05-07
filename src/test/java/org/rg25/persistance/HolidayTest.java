@@ -20,6 +20,11 @@ public class HolidayTest {
         ArrayList<Holiday> holidays = new ArrayList<>(Arrays.asList(dao.getHolidays(2024)));
         logger.info("Received holidays: " + holidays);
         assertNotNull(holidays);
+        for (Holiday holiday : holidays) {
+            logger.info("--HOLIDAY--");
+            logger.info(holiday.getDate());
+            logger.info(holiday.getName());
+        }
     }
 
 }
