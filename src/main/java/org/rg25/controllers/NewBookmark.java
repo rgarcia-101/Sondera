@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+/**
+ * Controller for making new bookmarks
+ */
 @WebServlet(
         urlPatterns = {"/newBookmark"}
 )
@@ -22,6 +25,19 @@ public class NewBookmark extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Bookmark> bookmarkDao = new GenericDao<>(Bookmark.class);
 
+    /**
+     * Handles get requests, will make a new bookmark
+     * @param req   an {@link HttpServletRequest} object that
+     *                  contains the request the client has made
+     *                  of the servlet
+     *
+     * @param resp  an {@link HttpServletResponse} object that
+     *                  contains the response the servlet sends
+     *                  to the client
+     *
+     * @throws ServletException servlet exception
+     * @throws IOException IO exception
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -29,7 +45,7 @@ public class NewBookmark extends HttpServlet {
 
         // No user, default to error page
         if (session.getAttribute("user") == null) {
-            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
+            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error");
             dispatch.forward(req, resp);
             return;
         }

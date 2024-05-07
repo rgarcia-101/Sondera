@@ -17,6 +17,9 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+/**
+ * Controller for making new dates
+ */
 @WebServlet(
         urlPatterns = {"/newDate"}
 )
@@ -24,6 +27,19 @@ public class NewDate extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Date> dateDao = new GenericDao<>(Date.class);
 
+    /**
+     * Handles get requests, will make a new date
+     * @param req   an {@link HttpServletRequest} object that
+     *                  contains the request the client has made
+     *                  of the servlet
+     *
+     * @param resp  an {@link HttpServletResponse} object that
+     *                  contains the response the servlet sends
+     *                  to the client
+     *
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();

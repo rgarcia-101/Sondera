@@ -18,7 +18,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//TODO consider something else
+//TODO consider if the "new" classes can be condensed
 @WebServlet (
         urlPatterns = {"/newNote"}
 )

@@ -27,7 +27,7 @@ public class NoteHomeController extends HttpServlet {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
 
-        //TODO optimize?
+        //TODO code appears several times, condense
 
         // No user, default to error page
         if (session.getAttribute("user") == null) {

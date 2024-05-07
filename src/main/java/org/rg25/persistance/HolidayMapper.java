@@ -23,10 +23,10 @@ public class HolidayMapper implements PropertiesLoader {
     public Holiday[] getHolidays(int year) throws NotFoundException{
         String key = (String) properties.get("key");
         String url = (String) properties.get("url");
+        url += "&year=" + year + "$type=major_holiday";
+        logger.info("API URL: " + url);
         Client client = ClientBuilder.newClient();
-        //TODO what kind of holidays to get?
-        WebTarget target = client.target(url +
-                "&year=" + year + "&type=major_holiday");
+        WebTarget target = client.target(url);
 
 
         String response = target.request(MediaType.APPLICATION_JSON).header("X-Api-Key",key).get(String.class);

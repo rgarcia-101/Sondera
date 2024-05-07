@@ -16,6 +16,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Controller for dashboard
+ */
 @WebServlet(
         urlPatterns = {"/home"}
 )
@@ -28,6 +31,19 @@ public class HomeController extends HttpServlet {
     GenericDao<Bookmark> bookmarkDao = new GenericDao<>(Bookmark.class);
 
 
+    /**
+     * Handles get requests, displays the dashboard
+     * @param req   an {@link HttpServletRequest} object that
+     *                  contains the request the client has made
+     *                  of the servlet
+     *
+     * @param resp  an {@link HttpServletResponse} object that
+     *                  contains the response the servlet sends
+     *                  to the client
+     *
+     * @throws ServletException servlet exception
+     * @throws IOException IO exception
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -56,7 +72,5 @@ public class HomeController extends HttpServlet {
         req.setAttribute("dates", dateList);
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/dashboard.jsp");
         dispatch.forward(req, resp);
-
-
     }
     }
