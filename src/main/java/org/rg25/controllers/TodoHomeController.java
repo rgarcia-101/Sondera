@@ -27,6 +27,7 @@ import java.util.List;
 public class TodoHomeController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    private GenericDao<User> userDao = new GenericDao<>(User.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -40,6 +41,7 @@ public class TodoHomeController extends HttpServlet {
             return;
         }
 
+        user = userDao.getById(user.getId());
         List<Todo> todos = user.getTodos();
         List<List<Todo>> todoList = null;
         try {
@@ -61,7 +63,7 @@ public class TodoHomeController extends HttpServlet {
         List<Todo> soon = new ArrayList<>();
         List<Todo> later = new ArrayList<>();
 
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date now = new Date();
         Date tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);

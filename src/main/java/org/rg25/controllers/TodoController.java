@@ -83,7 +83,7 @@ public class TodoController extends HttpServlet {
             int id = content.get("id").getAsInt();
             String title = content.get("todoTitle").getAsString();
             String dueDate = content.get("dueDate").getAsString();
-            dueDate += " 00:00:00";
+//            dueDate += " 00:00:00";
             Todo todo = todoDao.getById(id);
             if (todo.getContent().equals(description) && todo.getTitle().equals(title) &&
                     todo.getDueDate().equals(dueDate)) {
