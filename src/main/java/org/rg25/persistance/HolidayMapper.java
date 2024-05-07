@@ -22,9 +22,10 @@ public class HolidayMapper implements PropertiesLoader {
 
     public Holiday[] getHolidays(int year) throws NotFoundException{
         String key = (String) properties.get("key");
+        String url = (String) properties.get("url");
         Client client = ClientBuilder.newClient();
         //TODO what kind of holidays to get?
-        WebTarget target = client.target("https://api.api-ninjas.com/v1/holidays?country=us" +
+        WebTarget target = client.target(url +
                 "&year=" + year + "&type=major_holiday");
 
 
