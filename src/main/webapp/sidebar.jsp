@@ -17,7 +17,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="todos" class="nav-link text-white">
                             Todos
                         </a>
                     </li>
@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link text-white">
+                        <a href="dates" class="nav-link text-white">
                             Dates
                         </a>
                     </li>

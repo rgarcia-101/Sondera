@@ -44,9 +44,18 @@
     <br>
     <h3>Todos:</h3>
     <a href="todos">All todo</a><br>
+    <div class="container d-flex mt-4 p-4" style="width: 95%;margin-left: 0">
     <c:forEach items="${todos}" end="5" var="todo">
-        <a href="todoEditor?id=${todo.id}">${todo.title}</a>
+        <div class="card text-truncate" style="width: 25%;max-height: 400px;">
+            <div class="card-body">
+                <h5 class="card-title"><a href="todoEditor?id=${todo.id}">${todo.title}</a></h5>
+                <h4>${todo.dueDate}</h4>
+                <hr/>
+                <p class="card-text">${todo.content}</p>
+            </div>
+        </div>
     </c:forEach>
+    </div>
 
     <br>
     <h3>Dates:</h3>
