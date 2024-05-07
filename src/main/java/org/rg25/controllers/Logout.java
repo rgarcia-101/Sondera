@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Properties;
 
+/**
+ * Controller for logging out
+ */
 @WebServlet(
         urlPatterns = {"/logout"}
 )
@@ -23,12 +26,19 @@ public class Logout extends HttpServlet implements PropertiesLoader {
     public static String LOGOUT_URL;
     public static String REDIRECT_URL;
 
+    /**
+     * Loads properties
+     * @throws ServletException
+     */
     @Override
     public void init() throws ServletException {
         super.init();
         loadProperties();
     }
 
+    /**
+     * Handles loading properties
+     */
     private void loadProperties() {
         try {
             properties = loadProperties("/cognito.properties");
@@ -40,6 +50,19 @@ public class Logout extends HttpServlet implements PropertiesLoader {
         }
     }
 
+    /**
+     * Handles get requests, will log the user out
+     * @param req   an {@link HttpServletRequest} object that
+     *                  contains the request the client has made
+     *                  of the servlet
+     *
+     * @param resp  an {@link HttpServletResponse} object that
+     *                  contains the response the servlet sends
+     *                  to the client
+     *
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();

@@ -56,7 +56,7 @@ CREATE TABLE `date`
 (
     id        int AUTO_INCREMENT
             PRIMARY KEY,
-    title     varchar(25)       NOT NULL,
+    title     varchar(120)      NOT NULL,
     `date`    DATE              NOT NULL,
     content   varchar(500),
     user_id   INT               NOT NULL,

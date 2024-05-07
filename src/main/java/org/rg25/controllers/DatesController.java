@@ -20,6 +20,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+/**
+ * Controller for date editor
+ */
 @WebServlet(
         urlPatterns = {"/dateEditor"}
 )
@@ -28,6 +31,19 @@ public class DatesController extends HttpServlet {
     private GenericDao<Date> dateDao = new GenericDao<>(Date.class);
     private ServletUtil util = new ServletUtil();
 
+    /**
+     * Handles get requests, shows date home
+     * @param req   an {@link HttpServletRequest} object that
+     *                  contains the request the client has made
+     *                  of the servlet
+     *
+     * @param resp  an {@link HttpServletResponse} object that
+     *                  contains the response the servlet sends
+     *                  to the client
+     *
+     * @throws ServletException servlet exception
+     * @throws IOException IO exception
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String dateId = req.getParameter("id");
@@ -55,6 +71,19 @@ public class DatesController extends HttpServlet {
         dispatch.forward(req, resp);
     }
 
+    /**
+     * Handles put requests, updates a record
+     * @param req   the {@link HttpServletRequest} object that
+     *                  contains the request the client made of
+     *                  the servlet
+     *
+     * @param resp  the {@link HttpServletResponse} object that
+     *                  contains the response the servlet returns
+     *                  to the client
+     *
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuilder buffer;

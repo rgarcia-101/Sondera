@@ -24,6 +24,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller for date home
+ */
 @WebServlet(
         urlPatterns = {"/dates"}
 )
@@ -32,10 +35,24 @@ public class DatesHomeController extends HttpServlet {
     private GenericDao<User> userDao = new GenericDao<>(User.class);
     private ServletUtil util = new ServletUtil();
 
+    /**
+     * Handles get requests, shows date home
+     * @param req   an {@link HttpServletRequest} object that
+     *                  contains the request the client has made
+     *                  of the servlet
+     *
+     * @param resp  an {@link HttpServletResponse} object that
+     *                  contains the response the servlet sends
+     *                  to the client
+     *
+     * @throws ServletException servlet exception
+     * @throws IOException IO exception
+     */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
+        //TODO sort dates
 
         // No user, default to error page
         if (session.getAttribute("user") == null) {
@@ -46,6 +63,9 @@ public class DatesHomeController extends HttpServlet {
         String year = req.getParameter("year");
         if (year == null) {
             year = util.getYear();
+        }
+        if (Integer.parseInt(year) > 1900) {
+            year = String.valueOf((Integer.parseInt(year) - 1900));
         }
 
 
@@ -63,9 +83,7 @@ public class DatesHomeController extends HttpServlet {
         for (Date date : dateList) {
             try {
                 java.util.Date currentDate = format.parse(date.getDate());
-                logger.info("Current year: " + currentDate.getYear());
                 if (String.valueOf(currentDate.getYear()).equals(year)) {
-                    logger.info("Current year post: " + currentDate.getYear());
                     switch (currentDate.getMonth()) {
                         case Calendar.JANUARY:
                             filteredDates.get(0).add(date);
@@ -109,7 +127,6 @@ public class DatesHomeController extends HttpServlet {
                 logger.error("Could not parse dates! " + e);
             }
 
-            logger.info("Date list: " + filteredDates);
         }
 
         String url = "/datesHome.jsp";

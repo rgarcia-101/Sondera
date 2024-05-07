@@ -14,6 +14,9 @@ import java.io.IOException;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
 
+/**
+ * Controller to handle deletes
+ */
 @WebServlet(
         urlPatterns = {"/delete"}
 )
@@ -22,12 +25,25 @@ public class DeleteController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao dao;
 
+    /**
+     * Handles post requests, deletes a record
+     * @param req   an {@link HttpServletRequest} object that
+     *                  contains the request the client has made
+     *                  of the servlet
+     *
+     * @param resp  an {@link HttpServletResponse} object that
+     *                  contains the response the servlet sends
+     *                  to the client
+     *
+     * @throws ServletException servlet exception
+     * @throws IOException IOException
+     */
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.debug("Received Post");
         HttpSession session = req.getSession();
         User user = (User) req.getSession().getAttribute("user");
-        // TODO
+        // TODO more verification before delete?
         if (user == null) {
             logger.error("No user detected!");
             throw new ServletException();
@@ -52,8 +68,19 @@ public class DeleteController extends HttpServlet {
 
 
     // TODO use delete?
+
+    /**
+     * Handles delete requests, not currently used
+     * @param req   the {@link HttpServletRequest} object that
+     *                  contains the request the client made of
+     *                  the servlet
+     *
+     * @param resp  the {@link HttpServletResponse} object that
+     *                  contains the response the servlet returns
+     *                  to the client
+     *
+     */
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) {
-
     }
 }
