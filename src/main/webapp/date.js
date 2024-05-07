@@ -6,6 +6,7 @@ let title
 let dateId;
 let setDate;
 
+// TODO condense the Javascript code, appears several times
 // Ctrl + s feature
 window.addEventListener('load', function() {
     textArea = document.querySelector('#textInput');
@@ -14,7 +15,7 @@ window.addEventListener('load', function() {
     title = document.querySelector('#dateTitle');
     setDate = document.querySelector('#setDate');
     disappearCount = 0;
-    // TODO condense code
+
     textArea.addEventListener('keydown',function (e) {
         if (e.keyCode === 17) {
             e.preventDefault();
@@ -66,7 +67,7 @@ const date = async () => {
 
     let header = {'Content-Type': 'application/json'}
 
-    const reply =  fetch('dateEditor', {
+    const reply = fetch('dateEditor', {
         method: 'PUT',
         body: bodyData,
         headers: header
@@ -81,7 +82,6 @@ const date = async () => {
                 saveText.innerHTML = "Could not save! Please try again."
                 disappearCount = 3;
             }
-            console.log(received);
         })
 
 
