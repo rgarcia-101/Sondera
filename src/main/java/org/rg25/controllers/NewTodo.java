@@ -2,7 +2,7 @@ package org.rg25.controllers;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.rg25.entity.Note;
+import org.rg25.entity.Todo;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
 
@@ -18,13 +18,12 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-//TODO consider something else
-@WebServlet (
-        urlPatterns = {"/newNote"}
+@WebServlet(
+        urlPatterns = {"/newTodo"}
 )
-public class newNote extends HttpServlet {
+public class NewTodo extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
-    private GenericDao<Note> noteDao = new GenericDao<>(Note.class);
+    private GenericDao<Todo> todoDao = new GenericDao<>(Todo.class);
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -39,12 +38,12 @@ public class newNote extends HttpServlet {
         }
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
-        Note note = new Note(user, "New Note", "", format.format(date));
+        Todo todo = new Todo(user, "New Todo", "", format.format(date),format.format(date),false);
 
-        int id = noteDao.insert(note);
+        int id = todoDao.insert(todo);
 
-        session.setAttribute("title", "Edit Note");
+        session.setAttribute("title", "Edit Todo");
 
-        resp.sendRedirect("noteEditor?id=" + id);
+        resp.sendRedirect("todoEditor?id=" + id);
     }
 }
