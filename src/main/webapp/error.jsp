@@ -4,8 +4,7 @@
     <title>Error!</title>
 </head>
 <body>
-<%--TODO change link--%>
-<p>Something went wrong! Return <a href="/OrganizationalApp_war">here!</a></p>
+<p>Something went wrong! Return <a href="home">here!</a></p>
 
 </body>
 </html>
