@@ -2,16 +2,33 @@
 <c:import url="head.jsp"/>
 <html>
 <head>
+    <script src="dateHome.js"></script>
 </head>
 <body>
 <c:import url="navbar.jsp"/>
 <c:import url="sidebar.jsp"/>
-<button class="btn btn-primary">
-    <a href="newDate" class="link-light">Create New Date</a>
-</button>
-<div class="d-flexbox justify-content-center align-items-center">
-    <p>${calendarYear}</p>
+<div class="d-flex p-2">
+    <button class="btn btn-primary">
+        <a href="newDate" class="link-light">Create New Date</a>
+    </button>
+    <div class="dropdown ms-auto">
+        <button class="btn btn-primary dropdown-toggle" type="button"
+                id="importBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Import Holidays
+        </button>
+        <div class="dropdown-menu" aria-labelledby="importBtn">
+            <button class="dropdown-item" id="importButton">Yes, import</button>
+        </div>
+    </div>
+    <p id="saveText"></p>
 </div>
+<div class="container d-flex mx-auto justify-content-center align-items-center w-100">
+    <div class="p-2"><h4><a href="dates?year=${calendarYear - 1}">&larr;</a></h4></div>
+    <div class="p-2"><h4>${calendarYear}</h4></div>
+    <div class="p-2"><h4><a href="dates?year=${calendarYear + 1}">&rarr;</a></h4></div>
+</div>
+<input type="hidden" id="calendarYear" value="${calendarYear}">
+
 <div class="container">
     <div class="row mb-md-2">
         <div class="col-md-6 col-lg-3">
