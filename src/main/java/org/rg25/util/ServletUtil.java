@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.util.Date;
 
 public class ServletUtil {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -37,6 +38,15 @@ public class ServletUtil {
         jsonResponse.addProperty("responseCode", "0");
         writer.print(jsonResponse.toString());
         writer.flush();
+    }
+
+    /**
+     * Gets the current year
+     * @return current year
+     */
+    public String getYear() {
+        Date date = new Date();
+        return String.valueOf(date.getYear());
     }
 
     /**
