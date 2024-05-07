@@ -1,15 +1,16 @@
-<%@include file="head.jsp"%>
 <%@include file="taglib.jsp"%>
+<c:import url="head.jsp"/>
+
 <html>
 <head>
     <script src="bookmark.js"></script>
 </head>
 <body>
 
-<%@include file="navbar.jsp"%>
+<c:import url="navbar.jsp"/>
 
 
-<%@include file="sidebar.jsp"%>
+<c:import url="sidebar.jsp"/>
 <div class="col-sm p-3 min-vh-100">
     <!-- content -->
     <input class="form-control" placeholder="Title" id="bookmarkTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
