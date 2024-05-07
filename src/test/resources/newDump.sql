@@ -27,7 +27,7 @@ create table todo
     content   varchar (100)        not null,
     created   datetime             not null,
     completed tinyint(1) default 0 not null,
-    due_date  datetime             not null,
+    due_date  date                 not null,
     user_id   int                  not null,
     constraint todo_user_id_fk
         foreign key (user_id) references user (user_id)
