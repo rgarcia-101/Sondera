@@ -21,6 +21,16 @@ public class Date {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Date() {
+
+    }
+    public Date(User user, String title, String content, String date) {
+        this.content = content;
+        this.user = user;
+        this.date = date;
+        this.title = title;
+    }
+
     public int getId() {
         return id;
     }
