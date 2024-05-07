@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" style="height: 100%;">
     <div class="row">
         <div class="col-sm-auto bg-dark sticky-top">
             <div class="d-flex flex-sm-column flex-row flex-nowrap bg-dark align-items-center sticky-top">
@@ -10,9 +10,6 @@
                     </li>
                     <li>
                         <a href="notes" class="nav-link text-white">
-<%--                            <svg class="bi me-2" width="16" height="16">--%>
-<%--                                <use xlink:href="#speedometer2"></use>--%>
-<%--                            </svg>--%>
                             Notes
                         </a>
                     </li>

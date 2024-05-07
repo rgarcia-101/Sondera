@@ -1,15 +1,13 @@
-<%@include file="head.jsp"%>
-<%@include file="taglib.jsp"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:import url="head.jsp"/>
 <html>
 <head>
     <script src="todo.js"></script>
 </head>
 <body>
 
-<%@include file="navbar.jsp"%>
-
-
-<%@include file="sidebar.jsp"%>
+<c:import url="navbar.jsp"/>
+<c:import url="sidebar.jsp"/>
 <div class="col-sm p-3 min-vh-100">
     <!-- content -->
     <input class="form-control" placeholder="Title" id="noteTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
@@ -30,10 +28,11 @@
 
     <p class="text-success" id="saveText"></p>
     <hr />
-<%--    TODO style this, set default date--%>
-    ${object.dueDate}
-    <input type="date" id="dueDate">
-    <div class="form-outline w-100" style="height: 80%; display: flex;">
+    <p>Due Date: ${object.dueDate}</p>
+    <br/>
+    <label for="dueDate">Set New Date:</label>
+    <input type="date" id="dueDate" value="${object.dueDate}">
+    <div class="form-outline w-100" style="height: 40%; display: flex;">
         <textarea class="form-control bg-light" placeholder="Description" style="resize: none" id="textInput">${object.content}</textarea>
     </div>
 </div>
