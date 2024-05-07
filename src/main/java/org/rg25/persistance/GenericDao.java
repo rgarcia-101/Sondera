@@ -7,6 +7,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.criteria.HibernateCriteriaBuilder;
+
 import java.util.List;
 
 /**
@@ -45,7 +47,7 @@ public class GenericDao<T> {
     public void delete(T entity) {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(entity);
+        session.remove(entity);
         transaction.commit();
         session.close();
     }
@@ -59,6 +61,7 @@ public class GenericDao<T> {
         Transaction transaction = session.beginTransaction();
         session.merge(entity);
         transaction.commit();
+        session.close();
     }
 
     /**
@@ -97,13 +100,6 @@ public class GenericDao<T> {
      * @return
      */
     public List<T> getByPropertyUpTo(String property, Object value, int limit) {
-//        Session session = getSession();
-//        CriteriaBuilder builder = session.getCriteriaBuilder();
-//        CriteriaQuery<T> query = builder.createQuery(type);
-//        Root<T> root =  query.from(type);
-//        List<T> list = session.createQuery(query).setMaxResults(limit).getResultList();
-//        session.close();
-//        return list;
 
         Session session = getSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
@@ -138,10 +134,10 @@ public class GenericDao<T> {
      */
     public List<T> getAll() {
         Session session = getSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
+        HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);
         Root<T> root =  query.from(type);
-        List<T> list = session.createQuery(query).getResultList();
+        List<T> list = session.createSelectionQuery(query).getResultList();
         session.close();
         return list;
     }
