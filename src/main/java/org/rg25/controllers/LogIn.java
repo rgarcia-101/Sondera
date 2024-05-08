@@ -36,7 +36,7 @@ public class LogIn extends HttpServlet implements PropertiesLoader {
      * Read in the cognito props file and get the client id and required urls
      * for authenticating a user.
      */
-    // 4 to do this work a single time and put the properties in the application scope
+    //  todo this work a single time and put the properties in the application scope
     private void loadProperties() {
         try {
             properties = loadProperties("/cognito.properties");

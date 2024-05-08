@@ -14,12 +14,21 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.util.Properties;
 
+/**
+ * Maps a Holiday object from the API
+ */
 public class HolidayMapper implements PropertiesLoader {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     Properties properties = loadProperties("/api.properties");
 
+    /**
+     * Gets holidays from the API
+     * @param year year to retrieve
+     * @return List of holidays
+     * @throws NotFoundException if nothing is found
+     */
     public Holiday[] getHolidays(int year) throws NotFoundException{
         String key = (String) properties.get("key");
         String url = (String) properties.get("url");
