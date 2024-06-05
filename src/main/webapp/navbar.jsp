@@ -7,6 +7,8 @@
                 <a href = "logIn" class="ms-auto link-light">Log in</a>
             </c:when>
             <c:otherwise>
+                <%--    TODO make page for user profile--%>
+                <%--    TODO add a profile link to dropdown--%>
                 <div class="dropdown ms-auto">
                     <button class="btn dropdown-toggle" type="button"
                             id="accMenu" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

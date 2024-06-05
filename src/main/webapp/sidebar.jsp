@@ -1,3 +1,5 @@
+<%--TODO redo, works poorly for responsive design--%>
+
 <div class="container-fluid" style="min-height: 100vh">
     <div class="row vh-100">
         <div class="col-sm-auto bg-dark sticky-top">

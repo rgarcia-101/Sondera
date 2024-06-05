@@ -28,11 +28,13 @@
 
     <p class="text-success" id="saveText"></p>
     <hr />
-    <p>Due Date: ${object.dueDate}</p>
+<%--TODO update date on save--%>
+    <p id="dueDateText">Due Date: ${object.dueDate}</p>
     <br/>
     <label for="dueDate">Set New Date:</label>
     <input type="date" id="dueDate" value="${object.dueDate}">
-    <div class="form-outline w-100" style="height: 40%; display: flex;">
+    <div class="form-outline w-100" style="height: 10%; display: flex;">
+<%--        TODO textarea is too big for current limit; make smaller or make limit bigger--%>
         <textarea class="form-control bg-light" placeholder="Description" style="resize: none" id="textInput">${object.content}</textarea>
     </div>
 </div>
