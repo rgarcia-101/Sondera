@@ -16,6 +16,9 @@ public class Date {
     private String date;
 
     private String content;
+    private String created;
+    @Column(name = "date_updated")
+    private String updated;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

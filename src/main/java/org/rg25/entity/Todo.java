@@ -22,9 +22,10 @@ public class Todo {
     private String content;
     @Column(name = "due_date")
     private String dueDate;
-    @Column(name = "created")
-    private String createdOn;
+    private String created;
     private boolean completed;
+    @Column(name = "date_updated")
+    private String updated;
 
     public Todo() {
 
@@ -36,7 +37,7 @@ public class Todo {
         title = todo.getTitle();
         content = todo.getContent();
         dueDate = todo.getDueDate();
-        createdOn = todo.getCreatedOn();
+        created = todo.getCreated();
         completed = todo.isCompleted();
     }
 
@@ -45,7 +46,7 @@ public class Todo {
         this.title = title;
         this.content = content;
         this.dueDate = due_date;
-        this.createdOn = createdOn;
+        this.created = createdOn;
         this.completed = completed;
     }
 
@@ -89,12 +90,12 @@ public class Todo {
         this.dueDate = due_date;
     }
 
-    public String getCreatedOn() {
-        return createdOn;
+    public String getCreated() {
+        return created;
     }
 
-    public void setCreatedOn(String createdOn) {
-        this.createdOn = createdOn;
+    public void setCreated(String createdOn) {
+        this.created = createdOn;
     }
 
     public boolean isCompleted() {
@@ -110,12 +111,12 @@ public class Todo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Todo todo = (Todo) o;
-        return id == todo.id && completed == todo.completed && Objects.equals(user, todo.user) && Objects.equals(title, todo.title) && Objects.equals(content, todo.content) && Objects.equals(dueDate, todo.dueDate) && Objects.equals(createdOn, todo.createdOn);
+        return id == todo.id && completed == todo.completed && Objects.equals(user, todo.user) && Objects.equals(title, todo.title) && Objects.equals(content, todo.content) && Objects.equals(dueDate, todo.dueDate) && Objects.equals(created, todo.created);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, title, content, dueDate, createdOn, completed);
+        return Objects.hash(id, user, title, content, dueDate, created, completed);
     }
 
     @Override
@@ -126,7 +127,7 @@ public class Todo {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", due_date='" + dueDate + '\'' +
-                ", createdOn='" + createdOn + '\'' +
+                ", createdOn='" + created + '\'' +
                 ", completed=" + completed +
                 '}';
     }

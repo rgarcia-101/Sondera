@@ -1,5 +1,6 @@
 package org.rg25.entity;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -18,15 +19,36 @@ public class Bookmark {
     @Column(name = "link")
     private String url;
     private String title;
+    private String created;
     private String description;
+    @Column(name = "date_updated")
+    private String updated;
 
     public Bookmark(){}
 
-    public Bookmark(String title, String url, String description, User user) {
+    public Bookmark(String title, String url, String description, User user, String created, String updated) {
         setTitle(title);
         setDescription(description);
         setUrl(url);
         setUser(user);
+        setCreated(created);
+        setUpdated(updated);
+    }
+
+    public String getCreated() {
+        return created;
+    }
+
+    public void setCreated(String created) {
+        this.created = created;
+    }
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
     }
 
     public int getId() {
@@ -77,6 +99,8 @@ public class Bookmark {
                 ", url='" + url + '\'' +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
+                ", created ='" + created + '\'' +
+                "' updated ='" + updated + '\'' +
                 '}';
     }
 
@@ -85,11 +109,11 @@ public class Bookmark {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Bookmark bookmark = (Bookmark) o;
-        return id == bookmark.id && Objects.equals(user, bookmark.user) && Objects.equals(url, bookmark.url) && Objects.equals(title, bookmark.title) && Objects.equals(description, bookmark.description);
+        return id == bookmark.id && Objects.equals(user, bookmark.user) && Objects.equals(url, bookmark.url) && Objects.equals(title, bookmark.title) && Objects.equals(description, bookmark.description) && Objects.equals(created, bookmark.created) && Objects.equals(updated, bookmark.updated);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, url, title, description);
+        return Objects.hash(id, user, url, title, description,created,updated);
     }
 }

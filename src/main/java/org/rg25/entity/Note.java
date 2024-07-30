@@ -16,21 +16,24 @@ public class Note {
     private User user;
     private String title;
     private String content;
-    @Column(name = "created")
-    private String createdOn;
+    @Column(name = "date_updated")
+    private String updated;
+    private String created;
 
     public Note(Note note) {
         id = note.getId();
         user = note.getUser();
         title = note.getTitle();
         content = note.getContent();
+        created = note.getCreated();
+        updated = note.getUpdated();
     }
 
-    public Note(User user, String title, String content, String created) {
+    public Note(User user, String title, String content, String created, String updated) {
         this.user = user;
         this.title = title;
         this.content = content;
-        this.createdOn = created;
+        this.created = created;
     }
 
 
@@ -38,6 +41,14 @@ public class Note {
 
     }
 
+
+    public String getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(String updated) {
+        this.updated = updated;
+    }
 
     public int getId() {
         return id;
@@ -71,25 +82,50 @@ public class Note {
         this.content = content;
     }
 
-    public String getCreatedOn() {
-        return createdOn;
+    public String getCreated() {
+        return created;
     }
 
-    public void setCreatedOn(String createdOn) {
-        this.createdOn = createdOn;
+    public void setCreated(String createdOn) {
+        this.created = createdOn;
     }
 
+//    @Override
+//    public boolean equals(Object o) {
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
+//        Note note = (Note) o;
+//        return id == note.id && Objects.equals(user, note.user) && Objects.equals(title, note.title) && Objects.equals(content, note.content) && Objects.equals(created, note.created);
+//    }
+
+
+//    @Override
+//    public int hashCode() {
+//        return Objects.hash(id, user, title, content, created);
+//    }
+//
+
+    //    @Override
+//    public String toString() {
+//        return "Note{" +
+//                "id=" + id +
+//                ", user=" + user +
+//                ", title='" + title + '\'' +
+//                ", content='" + content + '\'' +
+//                ", createdOn='" + created + '\'' +
+//                '}';
+//    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Note note = (Note) o;
-        return id == note.id && Objects.equals(user, note.user) && Objects.equals(title, note.title) && Objects.equals(content, note.content) && Objects.equals(createdOn, note.createdOn);
+        return id == note.id && Objects.equals(user, note.user) && Objects.equals(title, note.title) && Objects.equals(content, note.content) && Objects.equals(updated, note.updated) && Objects.equals(created, note.created);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user, title, content, createdOn);
+        return Objects.hash(id, user, title, content, updated, created);
     }
 
     @Override
@@ -99,7 +135,8 @@ public class Note {
                 ", user=" + user +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", createdOn='" + createdOn + '\'' +
+                ", updated='" + updated + '\'' +
+                ", created='" + created + '\'' +
                 '}';
     }
 }
