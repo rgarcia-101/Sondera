@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.rg25.entity.Note;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
+import org.rg25.util.ServletUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,6 +27,7 @@ public class NewNote extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Note> noteDao = new GenericDao<>(Note.class);
 
+    private ServletUtil util = new ServletUtil();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -37,9 +39,8 @@ public class NewNote extends HttpServlet {
             dispatch.forward(req, resp);
             return;
         }
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        Note note = new Note(user, "New Note", "", format.format(date));
+
+        Note note = new Note(user, "New Note", "",util.getDateTime(),util.getDateTime());
 
         int id = noteDao.insert(note);
 

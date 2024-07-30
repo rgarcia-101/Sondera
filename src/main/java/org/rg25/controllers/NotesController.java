@@ -96,6 +96,7 @@ public class NotesController extends HttpServlet {
                 logger.info("Attempting to update..." + note);
                 note.setContent(text);
                 note.setTitle(title);
+                note.setUpdated(util.getDateTime());
                 noteDao.update(note);
                 JsonObject jsonResponse = new JsonObject();
                 jsonResponse.addProperty("responseCode", "0");

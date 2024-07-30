@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.rg25.entity.Bookmark;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
+import org.rg25.util.ServletUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 /**
  * Controller for making new bookmarks
@@ -25,6 +27,7 @@ public class NewBookmark extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Bookmark> bookmarkDao = new GenericDao<>(Bookmark.class);
 
+    private ServletUtil util = new ServletUtil();
     /**
      * Handles get requests, will make a new bookmark
      * @param req   an {@link HttpServletRequest} object that
@@ -51,7 +54,9 @@ public class NewBookmark extends HttpServlet {
         }
 
 
-        Bookmark bookmark = new Bookmark("New Bookmark","","",user);
+        String now = util.getDateTime();
+
+        Bookmark bookmark = new Bookmark("New Bookmark"," ","",user,now,now);
 
         int id = bookmarkDao.insert(bookmark);
 

@@ -131,6 +131,7 @@ public class BookmarkController extends HttpServlet {
                 bookmark.setTitle(title);
                 bookmark.setDescription(description);
                 bookmark.setUrl(link);
+                bookmark.setUpdated(util.getDateTime());
                 bookmarkDao.update(bookmark);
                 JsonObject jsonResponse = new JsonObject();
                 jsonResponse.addProperty("responseCode", "0");
