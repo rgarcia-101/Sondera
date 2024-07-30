@@ -26,6 +26,7 @@ create table todo
     title     varchar(25)          not null,
     content   varchar (150)        not null,
     created   datetime             not null,
+    date_updated datetime,
     completed tinyint(1) default 0 not null,
     due_date  date                 not null,
     user_id   int                  not null,
@@ -43,7 +44,7 @@ CREATE TABLE `note`
     title     varchar(40)          not null,
     content   text                 not null,
     created   datetime             not null,
-    updated   datetime,
+    date_updated datetime,
     user_id   int                  not null,
     constraint note_user_id_fk
         foreign key (user_id) references user (user_id)
@@ -58,7 +59,9 @@ CREATE TABLE `date`
             PRIMARY KEY,
     title     varchar(120)      NOT NULL,
     `date`    DATE              NOT NULL,
+    created datetime,
     content   varchar(500),
+    date_updated datetime,
     user_id   INT               NOT NULL,
     constraint date_user_id
         FOREIGN KEY (user_id) REFERENCES user (user_id)
@@ -73,6 +76,8 @@ CREATE TABLE `bookmark`
         primary key,
     title         varchar(40)          not null,
     description   varchar(200)         ,
+    created       datetime,
+    date_updated datetime,
     link          varchar(200)         not null,
     user_id       int                  not null,
     constraint bookmark_user_id_fk
