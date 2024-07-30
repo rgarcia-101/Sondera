@@ -7,6 +7,8 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class ServletUtil {
@@ -47,6 +49,12 @@ public class ServletUtil {
     public String getYear() {
         Date date = new Date();
         return String.valueOf(date.getYear());
+    }
+
+    public String getDateTime() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+        LocalDateTime time = LocalDateTime.now();
+        return time.format(formatter);
     }
 
     /**
