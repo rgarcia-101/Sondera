@@ -61,6 +61,7 @@ public class BookmarkHomeController extends HttpServlet {
 
         String url = "/bookmarksHome.jsp";
         req.setAttribute("bookmarks", bookmarkList);
+        req.setAttribute("title", "Bookmarks");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
     }

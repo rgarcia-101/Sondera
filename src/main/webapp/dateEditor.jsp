@@ -28,7 +28,7 @@
 
     <p class="text-success" id="saveText"></p>
     <hr />
-    <p>Due Date: ${object.date}</p>
+    <p>Date: ${object.date}</p>
     <br/>
     <label for="setDate">Set New Date:</label>
     <input type="date" id="setDate" value="${object.date}">

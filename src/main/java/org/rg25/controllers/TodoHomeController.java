@@ -53,6 +53,7 @@ public class TodoHomeController extends HttpServlet {
 
         String url = "/todosHome.jsp";
         req.setAttribute("todos", todoList);
+        req.setAttribute("title", "Todo");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
     }

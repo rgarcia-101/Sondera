@@ -9,7 +9,7 @@
 <c:import url="sidebar.jsp"/>
     <h2>Dashboard</h2>
 
-    <h3>Welcome ${user.username}</h3>
+    <h3>Welcome, ${user.username}</h3>
     <br><br>
     <h3>Notes:</h3>
     <button class="btn btn-primary">
