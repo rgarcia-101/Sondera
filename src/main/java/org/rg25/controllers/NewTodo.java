@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.rg25.entity.Todo;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
+import org.rg25.util.ServletUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -24,6 +25,7 @@ import java.util.Date;
 public class NewTodo extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Todo> todoDao = new GenericDao<>(Todo.class);
+    private ServletUtil util = new ServletUtil();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,9 +38,7 @@ public class NewTodo extends HttpServlet {
             dispatch.forward(req, resp);
             return;
         }
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        Todo todo = new Todo(user, "New Todo", "", format.format(date),format.format(date),false);
+        Todo todo = new Todo(user, "New Todo", "", util.getDateTime(),false);
 
         int id = todoDao.insert(todo);
 

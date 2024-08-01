@@ -54,9 +54,7 @@ public class NewBookmark extends HttpServlet {
         }
 
 
-        String now = util.getDateTime();
-
-        Bookmark bookmark = new Bookmark("New Bookmark"," ","",user,now,now);
+        Bookmark bookmark = new Bookmark("New Bookmark"," ","",user);
 
         int id = bookmarkDao.insert(bookmark);
 

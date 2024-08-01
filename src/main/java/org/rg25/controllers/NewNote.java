@@ -27,7 +27,6 @@ public class NewNote extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Note> noteDao = new GenericDao<>(Note.class);
 
-    private ServletUtil util = new ServletUtil();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -40,7 +39,7 @@ public class NewNote extends HttpServlet {
             return;
         }
 
-        Note note = new Note(user, "New Note", "",util.getDateTime(),util.getDateTime());
+        Note note = new Note(user, "New Note", "");
 
         int id = noteDao.insert(note);
 
