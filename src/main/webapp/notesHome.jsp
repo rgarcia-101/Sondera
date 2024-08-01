@@ -21,6 +21,7 @@
                             <h4 class="card-title">
                                 <a href="noteEditor?id=${note.id}">${note.title}</a>
                             </h4>
+                            <aside>Last Edited: ${note.updated}</aside>
                             <hr/>
                             <div class="post-meta overflow-auto" style="height: 80%;">
                                     ${note.content}

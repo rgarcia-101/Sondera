@@ -28,7 +28,8 @@
 
     <p class="text-success" id="saveText"></p>
     <hr />
-    <p>Date: ${object.date}</p>
+    <p id="DateText">Date: ${object.date}</p>
+    <p>Last Edited: ${object.updated}</p>
     <br/>
     <label for="setDate">Set New Date:</label>
     <input type="date" id="setDate" value="${object.date}">

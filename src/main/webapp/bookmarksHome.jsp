@@ -23,6 +23,7 @@
                                 <h4 class="card-title">
                                     <a href="bookmarkEditor?id=${bookmark.id}">${bookmark.title}</a>
                                 </h4>
+                                <aside>Last Edited: ${bookmark.updated}</aside>
                                 <a href="${bookmark.url}">${bookmark.url}</a>
                                 <hr/>
                                 <div class="post-meta overflow-auto" style="height: 80%;">

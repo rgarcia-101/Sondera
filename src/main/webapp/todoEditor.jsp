@@ -30,6 +30,7 @@
     <hr />
 <%--TODO update date on save--%>
     <p id="dueDateText">Due Date: ${object.dueDate}</p>
+    <p>Last Edited: ${object.updated}</p>
     <br/>
     <label for="dueDate">Set New Date:</label>
     <input type="date" id="dueDate" value="${object.dueDate}">

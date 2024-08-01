@@ -20,6 +20,7 @@
         <div class="card text-truncate" style="width: 25%;max-height: 400px;">
             <div class="card-body">
                 <h5 class="card-title"><a href="noteEditor?id=${note.id}">${note.title}</a></h5>
+                <p>Last Edited:<br/> ${note.updated}</p>
                 <hr/>
                 <p class="card-text">${note.content}</p>
             </div>
