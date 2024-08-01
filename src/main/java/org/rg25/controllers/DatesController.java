@@ -120,6 +120,7 @@ public class DatesController extends HttpServlet {
                 date.setTitle(title);
                 date.setContent(description);
                 date.setDate(setDate);
+                date.setUpdated(util.getDateTime());
                 dateDao.update(date);
                 JsonObject jsonResponse = new JsonObject();
                 jsonResponse.addProperty("responseCode", "0");

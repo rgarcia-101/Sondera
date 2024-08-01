@@ -98,6 +98,7 @@ public class TodoController extends HttpServlet {
                 todo.setTitle(title);
                 todo.setContent(description);
                 todo.setDueDate(dueDate);
+                todo.setUpdated(util.getDateTime());
                 todoDao.update(todo);
                 JsonObject jsonResponse = new JsonObject();
                 jsonResponse.addProperty("responseCode", "0");
