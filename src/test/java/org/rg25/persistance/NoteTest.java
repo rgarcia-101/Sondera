@@ -78,7 +78,7 @@ public class NoteTest {
     @Test
     void insertAndDeleteSuccess() {
         int allRecords = dao.getAll().size();
-        Note newNote = new Note(userDao.getById(1),"Note to self", "do hw", "1000-01-01 00:00:00", "1000-01-01 00:00:00");
+        Note newNote = new Note(userDao.getById(1),"Note to self", "do hw");
         int result = dao.insert(newNote);
         assertTrue(dao.getById(result).equals(newNote));
         assertTrue((allRecords+1) == dao.getAll().size());
