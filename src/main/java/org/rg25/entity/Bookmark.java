@@ -2,6 +2,7 @@ package org.rg25.entity;
 
 import com.mysql.cj.x.protobuf.MysqlxCrud;
 import jakarta.persistence.*;
+import org.rg25.util.ServletUtil;
 
 import java.util.Objects;
 
@@ -24,15 +25,18 @@ public class Bookmark {
     @Column(name = "date_updated")
     private String updated;
 
-    public Bookmark(){}
+    public Bookmark(){
+        ServletUtil util = new ServletUtil();
+        this.updated = util.getDateTime();
+        this.created = util.getDateTime();
+    }
 
-    public Bookmark(String title, String url, String description, User user, String created, String updated) {
+    public Bookmark(String title, String url, String description, User user) {
+        this();
         setTitle(title);
         setDescription(description);
         setUrl(url);
         setUser(user);
-        setCreated(created);
-        setUpdated(updated);
     }
 
     public String getCreated() {

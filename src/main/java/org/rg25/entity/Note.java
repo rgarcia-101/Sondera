@@ -1,6 +1,7 @@
 package org.rg25.entity;
 
 import jakarta.persistence.*;
+import org.rg25.util.ServletUtil;
 
 import java.util.Objects;
 
@@ -29,16 +30,18 @@ public class Note {
         updated = note.getUpdated();
     }
 
-    public Note(User user, String title, String content, String created, String updated) {
+    public Note(User user, String title, String content) {
+        this();
         this.user = user;
         this.title = title;
         this.content = content;
-        this.created = created;
     }
 
 
     public Note() {
-
+        ServletUtil util = new ServletUtil();
+        this.updated = util.getDateTime();
+        this.created = util.getDateTime();
     }
 
 
