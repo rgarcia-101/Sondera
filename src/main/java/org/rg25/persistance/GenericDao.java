@@ -112,6 +112,37 @@ public class GenericDao<T> {
     }
 
     /**
+     * Fetches all matching rows, to a limit, and sorts
+     * @param property property to match
+     * @param value property value
+     * @param sorter trait to sort by
+     * @param limit optional maximum rows to return, set to <1 to disable
+     * @param asc sorts by ascending if true
+     * @return
+     */
+    public List<T> getByPropertySorted(String property, Object value, String sorter, int limit, boolean asc) {
+        Session session = getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<T> query = builder.createQuery(type);
+        Root<T> root = query.from(type);
+
+        if (asc) {
+            query.select(root).where(builder.equal(root.get(property), value)).orderBy(builder.asc(root.get(sorter)));
+
+        } else {
+            query.select(root).where(builder.equal(root.get(property), value)).orderBy(builder.desc(root.get(sorter)));
+
+        }
+            List<T> list;
+        if (limit > 0) {
+            list = session.createQuery(query).setMaxResults(limit).getResultList();
+        } else {
+            list = session.createQuery(query).getResultList();
+        }
+        return list;
+    }
+
+    /**
      * Fetches rows based on a like property
      * @param property column name
      * @param value value to search for
