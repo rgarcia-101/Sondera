@@ -58,10 +58,11 @@ public class HomeController extends HttpServlet {
         session.setAttribute("object", null);
         session.setAttribute("callback", null);
 
-        List<Note> noteList = noteDao.getByPropertyUpTo("user", user,5);
-        List<Bookmark> bookmarkList = bookmarkDao.getByPropertyUpTo("user", user,5);
-        List<Todo> todoList = todoDao.getByPropertyUpTo("user", user,5);
-        List<Date> dateList = dateDao.getByPropertyUpTo("user", user,5);
+        List<Note> noteList = noteDao.getByPropertySorted("user", user, "updated",0, false);
+        List<Bookmark> bookmarkList = bookmarkDao.getByPropertySorted("user", user, "updated",0, false);
+        List<Todo> todoList = todoDao.getByPropertySorted("user", user, "dueDate",0, true);
+        //TODO add dates back in if or when they get displayed on the dashboard
+//        List<Date> dateList = dateDao.getByPropertySorted("user", user, "updated",0, false);
 
 
 
@@ -69,7 +70,7 @@ public class HomeController extends HttpServlet {
         req.setAttribute("notes", noteList);
         req.setAttribute("bookmarks", bookmarkList);
         req.setAttribute("todos", todoList);
-        req.setAttribute("dates", dateList);
+//        req.setAttribute("dates", dateList);
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/dashboard.jsp");
         dispatch.forward(req, resp);
     }
