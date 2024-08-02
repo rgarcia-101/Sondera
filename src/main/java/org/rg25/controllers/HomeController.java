@@ -50,8 +50,8 @@ public class HomeController extends HttpServlet {
 
         // No user, default to timeout page
         if (session.getAttribute("user") == null) {
-            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
-            dispatch.forward(req, resp);
+            logger.debug("user is null, redirecting to home page");
+            resp.sendRedirect(req.getContextPath());
             return;
         }
         User user = (User) session.getAttribute("user");

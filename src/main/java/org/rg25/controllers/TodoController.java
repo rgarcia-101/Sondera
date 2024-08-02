@@ -64,7 +64,6 @@ public class TodoController extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         StringBuilder buffer;
-        String line = null;
         User user = (User) req.getSession().getAttribute("user");
         if (user == null) {
             logger.error("No user detected!");
