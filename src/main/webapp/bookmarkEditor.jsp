@@ -12,7 +12,7 @@
 
 <c:import url="sidebar.jsp"/>
     <!-- content -->
-    <input class="form-control" placeholder="Title" id="bookmarkTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
+    <input class="form-control" placeholder="Title" maxlength="40" id="bookmarkTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
     <div class="d-flex p-2">
         <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="bookmark();">Save</button>
 
@@ -30,10 +30,10 @@
     <p class="text-success" id="saveText"></p>
     <hr />
     <div class="d-flex p-2">
-        <input class="form-control" id="urlText" placeholder="URL" type="text" value="${object.url}">
+        <input class="form-control" id="urlText" maxlength="200" placeholder="URL" type="text" value="${object.url}">
     </div>
-    <div class="form-outline w-100" style="height: 30%; display: flex;">
-        <textarea class="form-control bg-light" placeholder="Description (optional)" style="resize: none" id="textInput">${object.description}</textarea>
+    <div class="form-outline w-100" style="height: 20%; display: flex;">
+        <textarea class="form-control bg-light" maxlength="200" placeholder="Description (optional)" style="resize: none" id="textInput">${object.description}</textarea>
     </div>
 </div>
 </div>

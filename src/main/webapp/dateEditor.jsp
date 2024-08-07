@@ -10,7 +10,7 @@
 <c:import url="sidebar.jsp"/>
 <div class="col-sm p-3 min-vh-100">
     <!-- content -->
-    <input class="form-control" placeholder="Title" id="dateTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
+    <input class="form-control" placeholder="Title" maxlength="40" id="dateTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
     <div class="d-flex p-2">
         <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="date();">Save</button>
 
@@ -33,8 +33,8 @@
     <br/>
     <label for="setDate">Set New Date:</label>
     <input type="date" id="setDate" value="${object.date}">
-    <div class="form-outline w-100" style="height: 40%; display: flex;">
-        <textarea class="form-control bg-light" placeholder="Description" style="resize: none" id="textInput">${object.content}</textarea>
+    <div class="form-outline w-100" style="height: 20%; display: flex;">
+        <textarea class="form-control bg-light" maxlength="500" placeholder="Description" style="resize: none" id="textInput">${object.content}</textarea>
     </div>
 </div>
 </div>

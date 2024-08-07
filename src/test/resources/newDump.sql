@@ -23,7 +23,7 @@ create table todo
 (
     id        int auto_increment
         primary key,
-    title     varchar(25)          not null,
+    title     varchar(40)          not null,
     content   varchar (150)        not null,
     created   datetime             not null,
     date_updated datetime,
@@ -57,7 +57,7 @@ CREATE TABLE `date`
 (
     id        int AUTO_INCREMENT
             PRIMARY KEY,
-    title     varchar(120)      NOT NULL,
+    title     varchar(40)      NOT NULL,
     `date`    DATE              NOT NULL,
     created datetime,
     content   varchar(500),
