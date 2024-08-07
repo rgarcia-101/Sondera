@@ -50,6 +50,7 @@ public class NotesController extends HttpServlet {
         String url = "/noteEditor.jsp";
         req.getSession().setAttribute("object", note);
         req.getSession().setAttribute("callback", "notes");
+        req.setAttribute("title", "Edit Note");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
 

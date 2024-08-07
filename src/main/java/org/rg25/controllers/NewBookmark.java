@@ -54,7 +54,7 @@ public class NewBookmark extends HttpServlet {
         }
 
 
-        Bookmark bookmark = new Bookmark("New Bookmark"," ","",user);
+        Bookmark bookmark = new Bookmark("New Bookmark","","",user);
 
         int id = bookmarkDao.insert(bookmark);
 

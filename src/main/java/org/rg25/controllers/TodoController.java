@@ -54,6 +54,7 @@ public class TodoController extends HttpServlet {
         String url = "/todoEditor.jsp";
         req.getSession().setAttribute("object", todo);
         req.getSession().setAttribute("callback", "todos");
+        req.setAttribute("title", "Edit Todo");
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
 

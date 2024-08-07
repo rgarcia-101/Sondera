@@ -40,7 +40,7 @@ public class DefaultController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        req.setAttribute("title", "home");
+        req.setAttribute("title", "Home");
         String url = "/index.jsp";
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
