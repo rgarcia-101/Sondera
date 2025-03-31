@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.rg25</groupId>
-  <artifactId>OrganizationalApp</artifactId>
+  <artifactId>SonderaApp</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Organize Maven Webapp</name>
+  <name>Sondera Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
     <maven.compiler.release>11</maven.compiler.release>
@@ -139,6 +139,16 @@
     </dependency>
   </dependencies>
   <build>
-    <finalName>OrganizationalApp</finalName>
+    <finalName>Sondera</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>7</source>
+          <target>7</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

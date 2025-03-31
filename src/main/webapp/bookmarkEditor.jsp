@@ -12,7 +12,7 @@
 
 <c:import url="sidebar.jsp"/>
     <!-- content -->
-    <input class="form-control" placeholder="Title" maxlength="40" id="bookmarkTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
+    <input class="form-control" placeholder="Title" maxlength="50" id="bookmarkTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
     <div class="d-flex p-2">
         <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="bookmark();">Save</button>
 
@@ -22,18 +22,20 @@
                 Delete
             </button>
             <form class="dropdown-menu p-4" action="delete" method="post" aria-labelledby="deleteBtn">
-                <button type="submit" class="btn btn-danger">I'm sure</button>
+                <button type="submit" class="btn btn-danger">I'm Sure</button>
             </form>
         </div>
     </div>
 
     <p class="text-success" id="saveText"></p>
     <hr />
+    <p>Last Edited: ${object.updated}</p>
+    <br/>
     <div class="d-flex p-2">
-        <input class="form-control" id="urlText" maxlength="200" placeholder="URL" type="text" value="${object.url}">
+        <input class="form-control" id="urlText" maxlength="500" placeholder="URL" type="text" value="${object.url}">
     </div>
     <div class="form-outline w-100" style="height: 20%; display: flex;">
-        <textarea class="form-control bg-light" maxlength="200" placeholder="Description (optional)" style="resize: none" id="textInput">${object.description}</textarea>
+        <textarea class="form-control bg-light" maxlength="1000" placeholder="Description (optional)" style="resize: none" id="textInput">${object.description}</textarea>
     </div>
 </div>
 </div>
