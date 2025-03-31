@@ -15,15 +15,15 @@
         <div class="container">
             <div class="row mb-md-2">
                 <c:forEach items="${notes}" var="note">
-                <div class="col-md-6 col-lg-3">
+                <div class="col-md-3 col-lg-3">
                     <div class="card shadow-sm border-light mb-4">
-                        <div class="card-body" style="height: 400px;max-width: 100%;">
-                            <h4 class="card-title">
+                        <div class="card-body" style="height: 400px; max-height: 400px;max-width: 100%;">
+                            <h4 class="card-title" style="max-height: 70px;height: 70px;overflow: hidden; font-size: 1.2em;">
                                 <a href="noteEditor?id=${note.id}">${note.title}</a>
                             </h4>
                             <aside>Last Edited: ${note.updated}</aside>
                             <hr/>
-                            <div class="post-meta overflow-auto" style="height: 80%;">
+                            <div class="post-meta" style="height: 60%;overflow: auto;">
                                     ${note.content}
                             </div>
                         </div>

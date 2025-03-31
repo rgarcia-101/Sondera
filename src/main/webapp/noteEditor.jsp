@@ -23,7 +23,7 @@
                     Delete
                 </button>
                 <form class="dropdown-menu p-4" action="delete" method="post" aria-labelledby="deleteBtn">
-                    <button type="submit" class="btn btn-danger">I'm sure</button>
+                    <button type="submit" class="btn btn-danger">I'm Sure</button>
                 </form>
             </div>
 
@@ -31,6 +31,8 @@
 
         <p class="text-success" id="saveText"></p>
         <hr />
+        <p>Last Edited: ${object.updated}</p>
+        <br/>
         <div class="form-outline w-100" style="height: 80%; display: flex;">
             <textarea class="form-control bg-light" placeholder="Content" style="resize: none" id="textInput">${object.content}</textarea>
         </div>

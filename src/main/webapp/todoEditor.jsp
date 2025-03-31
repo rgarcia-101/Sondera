@@ -10,7 +10,7 @@
 <c:import url="sidebar.jsp"/>
 
     <!-- content -->
-    <input class="form-control" placeholder="Title" id="noteTitle" maxlength="40" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
+    <input class="form-control" placeholder="Title" id="noteTitle" maxlength="50" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
     <div class="d-flex p-2">
         <button type="button" class="btn btn-primary" style="margin-top: 1em;" onclick="todo();">Save</button>
 
@@ -20,7 +20,7 @@
                 Delete
             </button>
             <form class="dropdown-menu p-4" action="delete" method="post" aria-labelledby="deleteBtn">
-                <button type="submit" class="btn btn-danger">I'm sure</button>
+                <button type="submit" class="btn btn-danger">I'm Sure</button>
             </form>
         </div>
 
@@ -34,9 +34,10 @@
     <br/>
     <label for="dueDate">Set New Date:</label>
     <input type="date" id="dueDate" value="${object.dueDate}">
+    <br/>
     <div class="form-outline w-100" style="height: 10%; display: flex;">
 <%--        TODO textarea is too big for current limit; make smaller or make limit bigger--%>
-        <textarea class="form-control bg-light" placeholder="Description" style="resize: none;" maxlength="150" id="textInput">${object.content}</textarea>
+        <textarea class="form-control bg-light" placeholder="Description" style="resize: none;" maxlength="1000" id="textInput">${object.content}</textarea>
     </div>
 </div>
 </div>
