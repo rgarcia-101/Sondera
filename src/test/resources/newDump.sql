@@ -19,12 +19,13 @@ LOCK TABLES user WRITE;
 
 UNLOCK TABLES;
 
+-- TODO
 create table todo
 (
     id        int auto_increment
         primary key,
-    title     varchar(40)          not null,
-    content   varchar (150)        not null,
+    title     varchar(50)          not null,
+    content   varchar (1000)        not null,
     created   datetime             not null,
     date_updated datetime,
     completed tinyint(1) default 0 not null,
@@ -37,11 +38,12 @@ create table todo
 LOCK TABLES `todo` WRITE;
 UNLOCK TABLES;
 
+-- NOTE
 CREATE TABLE `note`
 (
     id        int auto_increment
         primary key,
-    title     varchar(40)          not null,
+    title     varchar(50)          not null,
     content   text                 not null,
     created   datetime             not null,
     date_updated datetime,
@@ -53,14 +55,17 @@ CREATE TABLE `note`
 LOCK TABLES note WRITE;
 UNLOCK TABLES;
 
+
+
+-- DATE
 CREATE TABLE `date`
 (
     id        int AUTO_INCREMENT
             PRIMARY KEY,
-    title     varchar(40)      NOT NULL,
+    title     varchar(50)      NOT NULL,
     `date`    DATE              NOT NULL,
     created datetime,
-    content   varchar(500),
+    content   varchar(1000),
     date_updated datetime,
     user_id   INT               NOT NULL,
     constraint date_user_id
@@ -70,15 +75,17 @@ CREATE TABLE `date`
 LOCK TABLES `date` WRITE;
 UNLOCK TABLES ;
 
+
+-- BOOKMARK
 CREATE TABLE `bookmark`
 (
     id        int auto_increment
         primary key,
-    title         varchar(40)          not null,
-    description   varchar(200)         ,
+    title         varchar(50)          not null,
+    description   varchar(1000)         ,
     created       datetime,
     date_updated datetime,
-    link          varchar(200)         not null,
+    link          varchar(500)         not null,
     user_id       int                  not null,
     constraint bookmark_user_id_fk
         foreign key (user_id) references user (user_id)
