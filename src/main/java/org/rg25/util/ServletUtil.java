@@ -4,12 +4,16 @@ import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import org.rg25.entity.User;
 
 public class ServletUtil {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -66,5 +70,27 @@ public class ServletUtil {
         jsonResponse.addProperty("responseCode", "1");
         writer.print(jsonResponse.toString());
         writer.flush();
+    }
+
+
+    public boolean canAcceptRequest(User user, String id, HttpServletRequest req, HttpServletResponse resp, ServletContext context) {
+        try {
+            if (user == null) {
+                req.setAttribute("errReason", "noUser");
+                RequestDispatcher dispatch = context.getRequestDispatcher("/error.jsp");
+                dispatch.forward(req, resp);
+                return false;
+            }
+            else if (id == null || !id.matches("\\d+")) {
+                req.setAttribute("errReason", "null");
+                RequestDispatcher dispatch = context.getRequestDispatcher("/error.jsp");
+                dispatch.forward(req, resp);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error(e);
+            return false;
+        }
+        return true;
     }
 }
