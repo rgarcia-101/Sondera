@@ -33,16 +33,21 @@ public class NotesController extends HttpServlet {
         String noteId = req.getParameter("id");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        if (noteId == null || !noteId.matches("\\d+") || user == null) {
+
+
+        if (!util.canAcceptRequest(user, noteId, req, resp, getServletContext())) return;
+        Note note = noteDao.getById(Integer.parseInt(noteId));
+        if (note == null) {
+            req.setAttribute("errReason", "null");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;
         }
-        Note note = noteDao.getById(Integer.parseInt(noteId));
         if (!user.equals(note.getUser())) {
             logger.debug("User does not match!");
             logger.debug(user);
             logger.debug(note.getUser());
+            req.setAttribute("errReason", "wrongUser");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;

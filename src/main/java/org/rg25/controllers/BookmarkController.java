@@ -52,13 +52,17 @@ public class BookmarkController extends HttpServlet {
         String bookmarkId = req.getParameter("id");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        if (bookmarkId == null || !bookmarkId.matches("\\d+") || user == null) {
+
+
+        if (!util.canAcceptRequest(user, bookmarkId, req, resp, getServletContext())) return;
+        Bookmark bookmark = bookmarkDao.getById(Integer.parseInt(bookmarkId));
+        if (bookmark == null) {
+            req.setAttribute("errReason", "null");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;
         }
 
-        Bookmark bookmark = bookmarkDao.getById(Integer.parseInt(bookmarkId));
         if (!user.equals(bookmark.getUser())) {
             logger.debug("User does not match!");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");

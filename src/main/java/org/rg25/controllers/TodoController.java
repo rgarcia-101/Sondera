@@ -42,10 +42,11 @@ public class TodoController extends HttpServlet {
             return;
         }
         Todo todo = todoDao.getById(Integer.parseInt(todoId));
-        if (!user.equals(todo.getUser())) {
-            logger.debug("User does not match!");
-            logger.debug(user);
-            logger.debug(todo.getUser());
+
+
+        if (!util.canAcceptRequest(user, todoId, req, resp, getServletContext())) return;
+        if (todo == null) {
+            req.setAttribute("errReason", "null");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;

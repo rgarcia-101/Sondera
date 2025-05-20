@@ -49,12 +49,16 @@ public class DatesController extends HttpServlet {
         String dateId = req.getParameter("id");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        if (dateId == null || !dateId.matches("\\d+") || user == null) {
+
+
+        if (!util.canAcceptRequest(user, dateId, req, resp, getServletContext())) return;
+        Date date = dateDao.getById(Integer.parseInt(dateId));
+        if (date == null) {
+            req.setAttribute("errReason", "null");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;
         }
-        Date date = dateDao.getById(Integer.parseInt(dateId));
         if (!user.equals(date.getUser())) {
             logger.debug("User does not match!");
             logger.debug(user);
