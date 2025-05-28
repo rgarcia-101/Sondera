@@ -73,6 +73,15 @@ public class ServletUtil {
     }
 
 
+    /**
+     * Checks for potential issues before an item can be loaded
+     * @param user User making the request
+     * @param id id of the requested item, from the query string
+     * @param req servlet request
+     * @param resp servlet response
+     * @param context servlet context
+     * @return if request can be accepted
+     */
     public boolean canAcceptRequest(User user, String id, HttpServletRequest req, HttpServletResponse resp, ServletContext context) {
         try {
             if (user == null) {
@@ -83,6 +92,29 @@ public class ServletUtil {
             }
             else if (id == null || !id.matches("\\d+")) {
                 req.setAttribute("errReason", "null");
+                RequestDispatcher dispatch = context.getRequestDispatcher("/error.jsp");
+                dispatch.forward(req, resp);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error(e);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Checks for potential issues before a servlet can be loaded
+     * @param user User making the request
+     * @param req servlet request
+     * @param resp servlet response
+     * @param context servlet context
+     * @return if request can be accepted
+     */
+    public boolean canAcceptRequest(User user, HttpServletRequest req, HttpServletResponse resp, ServletContext context) {
+        try {
+            if (user == null) {
+                req.setAttribute("errReason", "noUser");
                 RequestDispatcher dispatch = context.getRequestDispatcher("/error.jsp");
                 dispatch.forward(req, resp);
                 return false;

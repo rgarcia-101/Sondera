@@ -36,15 +36,14 @@ public class TodoController extends HttpServlet {
         String todoId = req.getParameter("id");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("user");
-        if (todoId == null || !todoId.matches("\\d+") || user == null) {
-            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
-            dispatch.forward(req, resp);
-            return;
-        }
+//        if (todoId == null || !todoId.matches("\\d+") || user == null) {
+//            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
+//            dispatch.forward(req, resp);
+//            return;
+//        }
+        if (!util.canAcceptRequest(user, todoId, req, resp, getServletContext())) return;
         Todo todo = todoDao.getById(Integer.parseInt(todoId));
 
-
-        if (!util.canAcceptRequest(user, todoId, req, resp, getServletContext())) return;
         if (todo == null) {
             req.setAttribute("errReason", "null");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");

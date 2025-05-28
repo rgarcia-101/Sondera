@@ -55,11 +55,13 @@ public class DatesHomeController extends HttpServlet {
         //TODO sort dates
 
         // No user, default to error page
-        if (session.getAttribute("user") == null) {
-            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
-            dispatch.forward(req, resp);
-            return;
-        }
+        if (!util.canAcceptRequest(user, req, resp, getServletContext())) return;
+//        if (session.getAttribute("user") == null) {
+//            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
+//            req.setAttribute("rg25.reason", "noUser");
+//            dispatch.forward(req, resp);
+//            return;
+//        }
         String year = req.getParameter("year");
         if (year == null) {
             year = util.getYear();
