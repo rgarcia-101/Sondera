@@ -11,7 +11,7 @@
     <button class="btn btn-primary">
         <a href="newDate" class="link-light">Create New Date</a>
     </button>
-    <div class="dropdown ms-auto">
+    <%-- <div class="dropdown ms-auto">
         <button class="btn btn-primary dropdown-toggle" type="button"
                 id="importBtn" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Import Holidays
@@ -19,7 +19,7 @@
         <div class="dropdown-menu" aria-labelledby="importBtn">
             <button class="dropdown-item" id="importButton">Yes, import</button>
         </div>
-    </div>
+    </div> --%>
     <p id="saveText"></p>
 </div>
 <div class="container d-flex mx-auto justify-content-center align-items-center w-100">

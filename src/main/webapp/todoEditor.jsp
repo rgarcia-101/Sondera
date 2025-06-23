@@ -35,9 +35,9 @@
     <label for="dueDate">Set New Date:</label>
     <input type="date" id="dueDate" value="${object.dueDate}">
     <br/>
-    <div class="form-outline w-100" style="height: 10%; display: flex;">
+    <div class="form-outline w-100" style="height: 35%; display: flex;">
 <%--        TODO textarea is too big for current limit; make smaller or make limit bigger--%>
-        <textarea class="form-control bg-light" placeholder="Description" style="resize: none;" maxlength="1000" id="textInput">${object.content}</textarea>
+        <textarea class="form-control bg-light" placeholder="Description" style="resize: none;" maxlength="5000" id="textInput">${object.content}</textarea>
     </div>
 </div>
 </div>
