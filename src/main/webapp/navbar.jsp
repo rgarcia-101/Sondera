@@ -15,6 +15,7 @@
                         <img src="images/usericon.png" style="width: 32px" alt="user">
                     </button>
                     <div class="dropdown-menu" aria-labelledby="accMenu">
+                        <a class="dropdown-item" href="${pageContext.request.contextPath}/account">Account</a>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Logout</a>
                     </div>
                 </div>
