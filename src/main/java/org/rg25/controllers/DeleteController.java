@@ -61,7 +61,7 @@ public class DeleteController extends HttpServlet {
         dao.delete(object);
 
         session.setAttribute("object", null);
-        session.setAttribute("object", null);
+        session.setAttribute("callback", null);
         logger.info("deleted object");
         resp.sendRedirect(callback);
     }

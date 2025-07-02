@@ -35,6 +35,8 @@ public class ErrorController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = "/error.jsp";
+        String reason = req.getAttribute("errReason") != null ? (String) req.getAttribute("reason") : "";
+        req.setAttribute("reason", reason);
         RequestDispatcher dispatch = getServletContext().getRequestDispatcher(url);
         dispatch.forward(req, resp);
     }

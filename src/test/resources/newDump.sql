@@ -65,7 +65,7 @@ CREATE TABLE `date`
     title     varchar(50)      NOT NULL,
     `date`    DATE              NOT NULL,
     created datetime,
-    content   varchar(1000),
+    content   varchar(5000),
     date_updated datetime,
     user_id   INT               NOT NULL,
     constraint date_user_id
@@ -82,7 +82,7 @@ CREATE TABLE `bookmark`
     id        int auto_increment
         primary key,
     title         varchar(50)          not null,
-    description   varchar(1000)         ,
+    description   varchar(5000)         ,
     created       datetime,
     date_updated datetime,
     link          varchar(500)         not null,

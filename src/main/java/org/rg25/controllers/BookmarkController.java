@@ -64,7 +64,9 @@ public class BookmarkController extends HttpServlet {
         }
 
         if (!user.equals(bookmark.getUser())) {
+
             logger.debug("User does not match!");
+            req.setAttribute("errReason", "wrongUser");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;

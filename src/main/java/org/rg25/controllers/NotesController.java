@@ -45,8 +45,6 @@ public class NotesController extends HttpServlet {
         }
         if (!user.equals(note.getUser())) {
             logger.debug("User does not match!");
-            logger.debug(user);
-            logger.debug(note.getUser());
             req.setAttribute("errReason", "wrongUser");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);

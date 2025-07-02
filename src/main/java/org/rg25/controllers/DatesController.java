@@ -61,8 +61,7 @@ public class DatesController extends HttpServlet {
         }
         if (!user.equals(date.getUser())) {
             logger.debug("User does not match!");
-            logger.debug(user);
-            logger.debug(date.getUser());
+            req.setAttribute("errReason", "wrongUser");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;
