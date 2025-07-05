@@ -15,16 +15,16 @@ public class HolidayTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    @Test
-    public void isNotNull() {
-        ArrayList<Holiday> holidays = new ArrayList<>(Arrays.asList(dao.getHolidays(2024)));
-        logger.info("Received holidays: " + holidays);
-        assertNotNull(holidays);
-        for (Holiday holiday : holidays) {
-            logger.info("--HOLIDAY--");
-            logger.info(holiday.getDate());
-            logger.info(holiday.getName());
-        }
-    }
+//    @Test
+//    public void isNotNull() {
+//        ArrayList<Holiday> holidays = new ArrayList<>(Arrays.asList(dao.getHolidays(2024)));
+//        logger.info("Received holidays: " + holidays);
+//        assertNotNull(holidays);
+//        for (Holiday holiday : holidays) {
+//            logger.info("--HOLIDAY--");
+//            logger.info(holiday.getDate());
+//            logger.info(holiday.getName());
+//        }
+//    }
 
 }

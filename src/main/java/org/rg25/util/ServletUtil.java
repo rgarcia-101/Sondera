@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import org.rg25.entity.User;
@@ -56,9 +57,10 @@ public class ServletUtil {
     }
 
     public String getDateTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
         LocalDateTime time = LocalDateTime.now();
-        return time.format(formatter);
+//        ZonedDateTime zoneTime = ZonedDateTime.now();
+//        zoneTime.format(formatter);
+        return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
     }
 
     /**

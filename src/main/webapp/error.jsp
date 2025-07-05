@@ -27,12 +27,12 @@
     </c:choose>
     <c:choose>
         <c:when test="${empty user}">
-            <p class="h5">Return <a href="home">here!</a></p>
+            <p class="h5">Return <a href="${pageContext.request.contextPath}/home">here!</a></p>
         </c:when>
 
         <c:otherwise>
-            <p class="h5">Return to your dashboard <a href="home">here!</a></p>
-            <p class="h5">Or, return to the main page <a href="index">here!</a></p>
+            <p class="h5">Return to your dashboard <a href="${pageContext.request.contextPath}/home">here!</a></p>
+            <p class="h5">Or, return to the main page <a href="${pageContext.request.contextPath}/index">here!</a></p>
         </c:otherwise>
     </c:choose>
 </div>
