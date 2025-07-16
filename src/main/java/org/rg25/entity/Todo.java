@@ -10,7 +10,7 @@ import java.util.Objects;
  */
 @Entity(name = "Todo")
 @Table(name = "todo")
-public class Todo {
+public class Todo implements DataEntry{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

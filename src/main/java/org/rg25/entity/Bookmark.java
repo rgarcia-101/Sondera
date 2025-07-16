@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity(name = "Bookmark")
 @Table(name = "bookmark")
-public class Bookmark {
+public class Bookmark implements DataEntry{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

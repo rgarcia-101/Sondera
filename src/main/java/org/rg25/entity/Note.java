@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity(name = "Note")
 @Table(name = "note")
-public class Note {
+public class Note implements DataEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,6 +53,7 @@ public class Note {
         this.updated = updated;
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -61,6 +62,7 @@ public class Note {
         this.id = id;
     }
 
+    @Override
     public User getUser() {
         return user;
     }
@@ -69,6 +71,7 @@ public class Note {
         this.user = user;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
