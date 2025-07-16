@@ -20,6 +20,8 @@
                 Delete
             </button>
             <form class="dropdown-menu p-4" action="delete" method="post" aria-labelledby="deleteBtn">
+                <input type="hidden" id="objId" name="objId" value="${object.id}">
+                <input type="hidden" id="objType" name="objType" value="date">
                 <button type="submit" class="btn btn-danger">I'm sure</button>
             </form>
         </div>

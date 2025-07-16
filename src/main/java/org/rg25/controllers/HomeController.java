@@ -55,6 +55,9 @@ public class HomeController extends HttpServlet {
             return;
         }
         User user = (User) session.getAttribute("user");
+
+
+        // TODO find out why deleting this (and on the other controllers) breaks everything??
         session.setAttribute("object", null);
         session.setAttribute("callback", null);
 
