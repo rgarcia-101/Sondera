@@ -2,7 +2,7 @@
 
 <div class="container-fluid" style="min-height: 100vh">
     <div class="row vh-100">
-        <div class="col-md-auto bg-dark sticky-top">
+        <div class="z-1 col-md-auto bg-dark sticky-top">
             <div class="d-flex flex-md-column flex-row flex-nowrap bg-dark align-items-center sticky-top">
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li>

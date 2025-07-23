@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top bg-dark">
+<nav class="z-3 navbar navbar-expand-lg navbar-dark navbar-fixed-top bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/index">Sondera</a>
         <c:choose>
