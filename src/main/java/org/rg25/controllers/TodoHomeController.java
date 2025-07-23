@@ -6,6 +6,7 @@ import org.rg25.entity.Note;
 import org.rg25.entity.Todo;
 import org.rg25.entity.User;
 import org.rg25.persistance.GenericDao;
+import org.rg25.util.ServletUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,6 +29,7 @@ public class TodoHomeController extends HttpServlet {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     private GenericDao<User> userDao = new GenericDao<>(User.class);
+    private ServletUtil util = new ServletUtil();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -35,11 +37,12 @@ public class TodoHomeController extends HttpServlet {
         User user = (User) session.getAttribute("user");
 
         // No user, default to error page
-        if (session.getAttribute("user") == null) {
-            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
-            dispatch.forward(req, resp);
-            return;
-        }
+        if (!util.canAcceptRequest(user, req, resp, getServletContext())) return;
+//        if (session.getAttribute("user") == null) {
+//            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
+//            dispatch.forward(req, resp);
+//            return;
+//        }
 
         user = userDao.getById(user.getId());
         List<Todo> todos = user.getTodos();

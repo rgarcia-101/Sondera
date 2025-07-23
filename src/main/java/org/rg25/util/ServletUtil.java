@@ -4,12 +4,17 @@ import com.google.gson.JsonObject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import org.rg25.entity.User;
 
 public class ServletUtil {
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -52,9 +57,10 @@ public class ServletUtil {
     }
 
     public String getDateTime() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
         LocalDateTime time = LocalDateTime.now();
-        return time.format(formatter);
+//        ZonedDateTime zoneTime = ZonedDateTime.now();
+//        zoneTime.format(formatter);
+        return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
     }
 
     /**
@@ -66,5 +72,59 @@ public class ServletUtil {
         jsonResponse.addProperty("responseCode", "1");
         writer.print(jsonResponse.toString());
         writer.flush();
+    }
+
+
+    /**
+     * Checks for potential issues before an item can be loaded
+     * @param user User making the request
+     * @param id id of the requested item, from the query string
+     * @param req servlet request
+     * @param resp servlet response
+     * @param context servlet context
+     * @return if request can be accepted
+     */
+    public boolean canAcceptRequest(User user, String id, HttpServletRequest req, HttpServletResponse resp, ServletContext context) {
+        try {
+            if (user == null) {
+                req.setAttribute("errReason", "noUser");
+                RequestDispatcher dispatch = context.getRequestDispatcher("/error.jsp");
+                dispatch.forward(req, resp);
+                return false;
+            }
+            else if (id == null || !id.matches("\\d+")) {
+                req.setAttribute("errReason", "null");
+                RequestDispatcher dispatch = context.getRequestDispatcher("/error.jsp");
+                dispatch.forward(req, resp);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error(e);
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Checks for potential issues before a servlet can be loaded
+     * @param user User making the request
+     * @param req servlet request
+     * @param resp servlet response
+     * @param context servlet context
+     * @return if request can be accepted
+     */
+    public boolean canAcceptRequest(User user, HttpServletRequest req, HttpServletResponse resp, ServletContext context) {
+        try {
+            if (user == null) {
+                req.setAttribute("errReason", "noUser");
+                RequestDispatcher dispatch = context.getRequestDispatcher("/error.jsp");
+                dispatch.forward(req, resp);
+                return false;
+            }
+        } catch (Exception e) {
+            logger.error(e);
+            return false;
+        }
+        return true;
     }
 }

@@ -37,7 +37,7 @@
         <input class="form-control" id="urlText" maxlength="500" placeholder="URL" type="text" value="${object.url}">
     </div>
     <div class="form-outline w-100" style="height: 20%; display: flex;">
-        <textarea class="form-control bg-light" maxlength="1000" placeholder="Description (optional)" style="resize: none" id="textInput">${object.description}</textarea>
+        <textarea class="form-control bg-light" maxlength="5000" placeholder="Description (optional)" style="resize: none" id="textInput">${object.description}</textarea>
     </div>
 </div>
 </div>

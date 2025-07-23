@@ -20,16 +20,16 @@
         <p>No Content Found!</p>
     </c:when>
     <c:otherwise>
-        <div class="container" style="margin-top: 15px; max-width: 75%">
+        <div class="container" style="margin-top: 15px;">
             <div class="row mb-md-6">
                 <c:forEach items="${notes}" end="7" var="note">
                     <div class="col-md-3">
                         <div class="card shadow-sm border-light mb-4">
                             <div class="card-body" style="height: 350px; max-height: 350px;max-width: 100%;">
-                                <h4 class="card-title" style="max-height: 70px;height: 70px;overflow: hidden; font-size: 1.2em;">
+                                <h4 class="card-title" style="height: 65px; max-height: 65px;overflow: hidden;font-size:1.2em">
                                     <a href="noteEditor?id=${note.id}">${note.title}</a>
                                 </h4>
-                                <aside>Last Edited: ${note.updated}</aside>
+                                <aside style="overflow:auto;font-size:.75em;">Edited: ${note.updated}</aside>
                                 <hr/>
                                 <div class="post-meta" style="height: 60%;overflow: auto;">
                                         ${note.content}
@@ -57,11 +57,12 @@
                 <c:forEach items="${bookmarks}" end="7" var="bookmark">
                     <div class="col-md-2">
                         <div class="card shadow-sm border-light mb-4">
-                            <div class="card-body" style="height: 100px;max-width: 100%;">
-                                <h4 class="card-title" style="overflow: hidden;">
-                                    <a href="bookmarkEditor?id=${bookmark.id}">${bookmark.title}</a>
+                            <div class="card-body" style="height: 160px; max-height: 160px;max-width: 100%;">
+                                <h4 class="card-title" style="height: 70px; max-height: 70px;overflow: hidden;font-size:1.2em;">
+                                    <a href="${bookmark.url}">${bookmark.title}</a>
                                 </h4>
-                                <a href="${bookmark.url}" style="overflow:hidden;">${bookmark.url}</a>
+                                <hr/>
+                                <a href="bookmarkEditor?id=${bookmark.id}" style="overflow:hidden; max-height:30px;">edit</a>
                             </div>
                         </div>
                     </div>
@@ -89,7 +90,7 @@
                                 <h4 class="card-title" style="height: 70px; max-height: 70px;overflow: hidden;font-size:1.2em">
                                     <a href="todoEditor?id=${todo.id}">${todo.title}</a>
                                 </h4>
-                                <aside>Due: ${todo.dueDate}</aside>
+                                <aside style="overflow:auto;font-size:.75em;">Due: ${todo.dueDate}</aside>
                                 <hr/>
                                 <div class="post-meta" style="height: 60%;overflow: auto;">
                                         ${todo.content}

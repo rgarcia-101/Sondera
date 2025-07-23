@@ -35,8 +35,8 @@
     <br/>
     <label for="setDate">Set New Date:</label>
     <input type="date" id="setDate" value="${object.date}">
-    <div class="form-outline w-100" style="height: 20%; display: flex;">
-        <textarea class="form-control bg-light" maxlength="500" placeholder="Description" style="resize: none" id="textInput">${object.content}</textarea>
+    <div class="form-outline w-100" style="height: 35%; display: flex;">
+        <textarea class="form-control bg-light" maxlength="5000" placeholder="Description" style="resize: none" id="textInput">${object.content}</textarea>
     </div>
 </div>
 </div>

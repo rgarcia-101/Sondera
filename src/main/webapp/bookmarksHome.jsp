@@ -19,14 +19,14 @@
                 <c:forEach items="${bookmarks}" var="bookmark">
                     <div class="col-md-6 col-lg-3">
                         <div class="card shadow-sm border-light mb-4">
-                            <div class="card-body" style="height: 200px;max-width: 100%;">
-                                <h4 class="card-title">
-                                    <a href="bookmarkEditor?id=${bookmark.id}">${bookmark.title}</a>
+                            <div class="card-body" style="height: 250px;max-height: 250px;max-width: 100%;">
+                                <h4 class="card-title" style="max-height: 50px;height: 50px;overflow: hidden; font-size: 1.2em;">
+                                    <a href="${bookmark.url}">${bookmark.title}</a>
                                 </h4>
-                                <aside>Last Edited: ${bookmark.updated}</aside>
-                                <a href="${bookmark.url}">${bookmark.url}</a>
+                                <aside style="height:25px;max-height:25px;overflow:hidden;">Last Edited: ${bookmark.updated}</aside>
+                                <a href="bookmarkEditor?id=${bookmark.id}" style="height:25px;max-height:25px;overflow:hidden;">Edit</a>
                                 <hr/>
-                                <div class="post-meta overflow-auto" style="height: 80%;">
+                                <div class="post-meta overflow-auto" style="max-height: 40%;overflow: hidden;">
                                         ${bookmark.description}
                                 </div>
                             </div>

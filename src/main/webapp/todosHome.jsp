@@ -9,6 +9,7 @@
 <c:import url="sidebar.jsp"/>
 <button class="btn btn-primary">
 <a href="newTodo" class="link-light">Create New Todo</a>
+<br/>
 </button>
 <div class="container" style="height: 50em;">
     <div class="row mb-md-2">
