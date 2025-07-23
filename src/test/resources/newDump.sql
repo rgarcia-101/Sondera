@@ -12,7 +12,8 @@ create table user
     username       varchar(50) not null,
     first_name     varchar(50) not null,
     last_name      varchar(50) not null,
-    email          varchar(50) not null
+    email          varchar(50) not null,
+    `zone`         varchar(100) not null default 'US/Central'
 );
 
 LOCK TABLES user WRITE;

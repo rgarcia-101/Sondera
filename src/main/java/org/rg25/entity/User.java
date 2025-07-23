@@ -22,6 +22,8 @@ public class User {
     private String lastName;
     @Column
     private String email;
+    @Column
+    private String zone;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @OrderBy("dueDate DESC")
     private List<Todo> todos;
@@ -89,6 +91,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getZone() {
+        return zone;
+    }
+
+    public void setZone(String zone) {
+        this.zone = zone;
     }
 
 
