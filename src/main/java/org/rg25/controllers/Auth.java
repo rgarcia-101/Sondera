@@ -187,6 +187,8 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         if (!userDao.getByProperty("username", testUser.getUsername()).isEmpty()) {
             user = userDao.getByProperty("username", testUser.getUsername()).get(0);
             testUser.setId(user.getId());
+            if (user.getZone() != null) testUser.setZone(user.getZone());
+            else testUser.setZone("US/Central");
             logger.info("current test user: " + testUser);
 
             // Checking if user data matches

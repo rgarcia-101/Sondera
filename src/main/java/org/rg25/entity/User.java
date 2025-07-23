@@ -47,9 +47,10 @@ public class User {
         email = newUser.getEmail();
         id = newUser.getId();
         todos = newUser.getTodos();
+        zone = newUser.getZone();
     }
 
-    public User(int id, String firstName, String lastName, String username, String email) {
+    public User(int id, String firstName, String lastName, String username, String email, String zone) {
 
     }
 
@@ -143,6 +144,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
+                ", zone='" + zone + '\'' +
                 '}';
     }
 
@@ -157,7 +159,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email);
+        return Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(zone, user.zone);
     }
 
     /**
@@ -170,12 +172,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email);
+        return id == user.id && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(zone, user.zone);
     }
 
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, username, firstName, lastName, email);
+        return Objects.hash(id, username, firstName, lastName, email, zone);
     }
 }

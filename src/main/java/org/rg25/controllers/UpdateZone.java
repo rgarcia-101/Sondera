@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.Set;
 
 
@@ -29,20 +30,28 @@ public class UpdateZone extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         User user = (User)session.getAttribute("user");
-        String zone = (String)req.getAttribute("zone");
+        String zone = req.getParameter("zones");
+        for (Iterator<String> it = req.getAttributeNames().asIterator(); it.hasNext(); ) {
+            String s = it.next();
+            logger.debug(s);
+        }
         if (user != null) {
+            logger.info("Updating zone");
             if (zone == null || !ZONES.contains(zone)) zone = user.getZone();
-
+            if (zone == null) zone = "US/Central";
             // TODO test without using the DAO
             user = dao.getById(user.getId());
 
             if (!user.getZone().equals(zone)) {
                 user.setZone(zone);
                 dao.update(user);
-            }
 
+                // TODO decide to replace user in sesison, or update existing one
+                session.setAttribute("user", user);
+            }
+            logger.info("Zone updated");
             req.setAttribute("title", "Account");
-            resp.sendRedirect("AccountController");
+            resp.sendRedirect("account");
         } else {
             logger.debug("User is null!");
             req.setAttribute("errReason", "noUser");
