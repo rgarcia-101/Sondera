@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity(name = "Date")
 @Table(name = "date")
-public class Date {
+public class Date implements DataEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -37,6 +37,7 @@ public class Date {
         this.title = title;
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -45,6 +46,7 @@ public class Date {
         this.id = id;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
@@ -69,6 +71,7 @@ public class Date {
         this.content = content;
     }
 
+    @Override
     public User getUser() {
         return user;
     }
