@@ -39,22 +39,27 @@ public class Bookmark implements DataEntry{
         setUser(user);
     }
 
+    @Override
     public String getCreated() {
         return created;
     }
 
+    @Override
     public void setCreated(String created) {
         this.created = created;
     }
 
+    @Override
     public String getUpdated() {
         return updated;
     }
 
+    @Override
     public void setUpdated(String updated) {
         this.updated = updated;
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -63,6 +68,7 @@ public class Bookmark implements DataEntry{
         this.id = id;
     }
 
+    @Override
     public User getUser() {
         return user;
     }
@@ -79,6 +85,7 @@ public class Bookmark implements DataEntry{
         this.url = url;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }

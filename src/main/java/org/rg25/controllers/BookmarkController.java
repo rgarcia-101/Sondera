@@ -64,13 +64,15 @@ public class BookmarkController extends HttpServlet {
         }
 
         if (!user.equals(bookmark.getUser())) {
-
             logger.debug("User does not match!");
             req.setAttribute("errReason", "wrongUser");
             RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
             dispatch.forward(req, resp);
             return;
         }
+
+        // Format the zone to match the user's
+        util.formatZone(user, bookmark);
 
         logger.info("Sending to bookmark editor...");
         String url = "/bookmarkEditor.jsp";

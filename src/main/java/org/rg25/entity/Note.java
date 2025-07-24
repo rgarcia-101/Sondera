@@ -44,11 +44,12 @@ public class Note implements DataEntry {
         this.created = util.getDateTime();
     }
 
-
+    @Override
     public String getUpdated() {
         return updated;
     }
 
+    @Override
     public void setUpdated(String updated) {
         this.updated = updated;
     }
@@ -88,10 +89,12 @@ public class Note implements DataEntry {
         this.content = content;
     }
 
+    @Override
     public String getCreated() {
         return created;
     }
 
+    @Override
     public void setCreated(String createdOn) {
         this.created = createdOn;
     }

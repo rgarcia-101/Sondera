@@ -67,6 +67,9 @@ public class DatesController extends HttpServlet {
             return;
         }
 
+        // Format the zone to match the user's
+        util.formatZone(user, date);
+
         String url = "/dateEditor.jsp";
         req.getSession().setAttribute("object", date);
         req.getSession().setAttribute("callback", "dates");

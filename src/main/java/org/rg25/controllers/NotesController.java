@@ -50,6 +50,11 @@ public class NotesController extends HttpServlet {
             dispatch.forward(req, resp);
             return;
         }
+
+        // Format the zone to match the user's
+        util.formatZone(user, note);
+
+
         String url = "/noteEditor.jsp";
         req.getSession().setAttribute("object", note);
         req.getSession().setAttribute("callback", "notes");

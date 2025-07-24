@@ -51,6 +51,18 @@ public class TodoController extends HttpServlet {
             return;
         }
 
+        if (!user.equals(todo.getUser())) {
+            logger.debug("User does not match!");
+            req.setAttribute("errReason", "wrongUser");
+            RequestDispatcher dispatch = getServletContext().getRequestDispatcher("/error.jsp");
+            dispatch.forward(req, resp);
+            return;
+        }
+
+        // Format the zone to match the user's
+        util.formatZone(user, todo);
+
+
         String url = "/todoEditor.jsp";
         req.getSession().setAttribute("object", todo);
         req.getSession().setAttribute("callback", "todos");

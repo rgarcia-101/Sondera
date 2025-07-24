@@ -80,18 +80,22 @@ public class Date implements DataEntry {
         this.user = user;
     }
 
+    @Override
     public String getCreated() {
         return created;
     }
 
+    @Override
     public void setCreated(String created) {
         this.created = created;
     }
 
+    @Override
     public String getUpdated() {
         return updated;
     }
 
+    @Override
     public void setUpdated(String updated) {
         this.updated = updated;
     }

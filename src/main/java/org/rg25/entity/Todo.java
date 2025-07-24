@@ -53,6 +53,7 @@ public class Todo implements DataEntry{
         this.completed = completed;
     }
 
+    @Override
     public int getId() {
         return id;
     }
@@ -61,6 +62,7 @@ public class Todo implements DataEntry{
         this.id = id;
     }
 
+    @Override
     public User getUser() {
         return user;
     }
@@ -69,6 +71,7 @@ public class Todo implements DataEntry{
         this.user = user;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
@@ -93,10 +96,12 @@ public class Todo implements DataEntry{
         this.dueDate = due_date;
     }
 
+    @Override
     public String getCreated() {
         return created;
     }
 
+    @Override
     public void setCreated(String createdOn) {
         this.created = createdOn;
     }
@@ -108,10 +113,12 @@ public class Todo implements DataEntry{
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
+
     /**
      * Gets updated date
      * @return date
      */
+    @Override
     public String getUpdated() {
         return updated;
     }
@@ -120,6 +127,7 @@ public class Todo implements DataEntry{
      * Sets updated date
      * @param updated date
      */
+    @Override
     public void setUpdated(String updated) {
         this.updated = updated;
     }
