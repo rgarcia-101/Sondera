@@ -6,6 +6,9 @@
 </head>
 <body>
 
+
+<main>
+
 <c:import url="navbar.jsp"/>
 <c:import url="sidebar.jsp"/>
 <div class="col-sm p-3 min-vh-100">
@@ -41,6 +44,9 @@
 </div>
 </div>
 </div>
+</div>
+
+</main>
 
 </body>
 </html>

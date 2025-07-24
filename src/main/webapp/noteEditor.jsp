@@ -8,9 +8,9 @@
 
 <main>
     <c:import url="navbar.jsp"/>
-
-
     <c:import url="sidebar.jsp"/>
+
+
     <div class="col-sm p-3 min-vh-100">
         <!-- content -->
         <input class="form-control" maxlength="40" placeholder="Title" id="noteTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">

@@ -7,10 +7,12 @@
 </head>
 <body>
 
+<main>
+
 <c:import url="navbar.jsp"/>
-
-
 <c:import url="sidebar.jsp"/>
+
+<div class="col-sm p-3 min-vh-100">
     <!-- content -->
     <input class="form-control" placeholder="Title" maxlength="50" id="bookmarkTitle" type="text" value="${object.title}" style="width: 100%; font-size: 160%;">
     <div class="d-flex p-2">
@@ -42,5 +44,9 @@
 </div>
 </div>
 </div>
+</div>
+
+</main>
+
 </body>
 </html>
