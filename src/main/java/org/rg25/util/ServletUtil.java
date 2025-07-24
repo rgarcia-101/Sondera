@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+
+import org.rg25.entity.DataEntry;
 import org.rg25.entity.User;
 
 public class ServletUtil {
@@ -56,11 +59,44 @@ public class ServletUtil {
         return String.valueOf(date.getYear());
     }
 
+    public String toLocalTime(String time) {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime formattedTime = LocalDateTime.parse(time, format);
+        return formattedTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm a"));
+    }
+
     public String getDateTime() {
-        LocalDateTime time = LocalDateTime.now();
+        ZonedDateTime time = ZonedDateTime.now().withZoneSameInstant(ZoneId.of("US/Central"));
+//        LocalDateTime time = LocalDateTime.now();
 //        ZonedDateTime zoneTime = ZonedDateTime.now();
 //        zoneTime.format(formatter);
-        return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss"));
+        return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+    }
+
+    /**
+     * Updates and formats the timezone of an object to match the zone set by the user
+     * @param user Current user
+     * @param obj Data entry to be verified
+     */
+    public void formatZone(User user, DataEntry obj) {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter localFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a");
+
+        LocalDateTime tempTime;
+        ZonedDateTime time;
+
+        if (obj.getUpdated() != null && !obj.getUpdated().isEmpty()) {
+            tempTime = LocalDateTime.parse(obj.getUpdated(), format);
+            time = ZonedDateTime.ofLocal(tempTime, ZoneId.of("US/Central"), null)
+                    .withZoneSameInstant(ZoneId.of(user.getZone()));
+            obj.setUpdated(time.format(localFormat));
+        }
+        if (obj.getCreated() != null && !obj.getCreated().isEmpty()) {
+            tempTime = LocalDateTime.parse(obj.getCreated(), format);
+            time = ZonedDateTime.ofLocal(tempTime, ZoneId.of("US/Central"), null)
+                    .withZoneSameInstant(ZoneId.of(user.getZone()));
+            obj.setCreated(time.format(localFormat));
+        }
     }
 
     /**
