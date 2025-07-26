@@ -99,31 +99,7 @@ public class Note implements DataEntry {
         this.created = createdOn;
     }
 
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        Note note = (Note) o;
-//        return id == note.id && Objects.equals(user, note.user) && Objects.equals(title, note.title) && Objects.equals(content, note.content) && Objects.equals(created, note.created);
-//    }
 
-
-//    @Override
-//    public int hashCode() {
-//        return Objects.hash(id, user, title, content, created);
-//    }
-//
-
-    //    @Override
-//    public String toString() {
-//        return "Note{" +
-//                "id=" + id +
-//                ", user=" + user +
-//                ", title='" + title + '\'' +
-//                ", content='" + content + '\'' +
-//                ", createdOn='" + created + '\'' +
-//                '}';
-//    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

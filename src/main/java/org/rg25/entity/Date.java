@@ -28,6 +28,7 @@ public class Date implements DataEntry {
     public Date() {
         ServletUtil util = new ServletUtil();
         this.updated = util.getDateTime();
+        this.created = util.getDateTime();
     }
     public Date(User user, String title, String content, String date) {
         this();
@@ -111,5 +112,18 @@ public class Date implements DataEntry {
     @Override
     public int hashCode() {
         return Objects.hash(id, title, date, content, created, updated);
+    }
+
+    @Override
+    public String toString() {
+        return "Date{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", date='" + date + '\'' +
+                ", content='" + content + '\'' +
+                ", created='" + created + '\'' +
+                ", updated='" + updated + '\'' +
+                ", user=" + user +
+                '}';
     }
 }
