@@ -70,7 +70,7 @@ public class ServletUtil {
 //        LocalDateTime time = LocalDateTime.now();
 //        ZonedDateTime zoneTime = ZonedDateTime.now();
 //        zoneTime.format(formatter);
-        return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
     }
 
     /**

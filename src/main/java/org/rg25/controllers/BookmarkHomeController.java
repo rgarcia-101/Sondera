@@ -60,6 +60,9 @@ public class BookmarkHomeController extends HttpServlet {
         user = userDao.getById(user.getId());
 
         List<Bookmark> bookmarkList = user.getBookmarks();
+        for (Bookmark bookmark : bookmarkList) {
+            util.formatZone(user, bookmark);
+        }
 
         String url = "/bookmarksHome.jsp";
         req.setAttribute("bookmarks", bookmarkList);

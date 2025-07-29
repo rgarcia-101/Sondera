@@ -48,7 +48,7 @@ public class TodoHomeController extends HttpServlet {
         List<Todo> todos = user.getTodos();
         List<List<Todo>> todoList = null;
         try {
-            todoList = processDates(todos);
+            todoList = processDates(todos, user);
         } catch (Exception e) {
             logger.error("Could not process dates! " + e);
         }
@@ -61,13 +61,13 @@ public class TodoHomeController extends HttpServlet {
         dispatch.forward(req, resp);
     }
 
-    private List<List<Todo>> processDates(List<Todo> todos) throws Exception {
+    private List<List<Todo>> processDates(List<Todo> todos, User user) throws Exception {
         List<Todo> overdue = new ArrayList<>();
         List<Todo> today = new ArrayList<>();
         List<Todo> soon = new ArrayList<>();
         List<Todo> later = new ArrayList<>();
 
-        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date now = new Date();
         Date tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -75,6 +75,9 @@ public class TodoHomeController extends HttpServlet {
         week.setDate(week.getDate() + 7);
         Date date;
         for (Todo todo : todos) {
+
+            util.formatZone(user, todo);
+
             date = format.parse(todo.getDueDate());
             if (date.before(now)) {
                 logger.info("overdue");

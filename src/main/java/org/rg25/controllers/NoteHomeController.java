@@ -45,6 +45,9 @@ public class NoteHomeController extends HttpServlet {
 
 
         List<Note> noteList = user.getNotes();
+        for (Note note : noteList) {
+            util.formatZone(user, note);
+        }
         String url = "/notesHome.jsp";
         req.setAttribute("notes", noteList);
         req.setAttribute("title", "Notes");
